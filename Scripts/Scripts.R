@@ -19,4 +19,21 @@ data = data %>%
 datamod = data %>%
   select(COUNTRYNEW,help,friends,comfort, science, EMP_2010,Age,Gender,Education,Subjective_Income,wbi) %>%
   filter(!is.na(EMP_2010)) # to make datasets the same size for comparison
-```
+
+datamod = datamod %>%
+  mutate(Help = ifelse(help ==1, "Sought Therapy","Did not seek therapy"))
+
+# Changed to match up with country names for map data
+datamod = datamod %>%
+  mutate(COUNTRYNEW = str_replace_all(COUNTRYNEW,"Congo Brazzaville","Republic of Congo" ))
+
+datamod = datamod%>%
+  mutate(COUNTRYNEW = str_replace_all(COUNTRYNEW,"Bosnia Herzegovina","Bosnia and Herzegovina"))
+
+write_csv(datamod, "Inputs/Data/datamod.csv")
+
+strat = read_csv(here::here("Inputs/Data/ipumsi_00001.csv.gz"))
+stratfull = strat %>%
+  filter(!is.na(INCTOT))
+
+

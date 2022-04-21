@@ -3,7 +3,7 @@ title: "Access to and Belief in Mental Health Care Still Low for Many Worldwide 
 author: "Olaedo Okpareke"
 thanks: 'Code and data are available at: https://github.com/OlaedoOkpareke/FinalPaperRepository' 
 date: "`r format(Sys.time(), '%d %B %Y')`"
-abstract: "Mental Health care is a form of human health as important as physical care, however for many around the world, it is deemed as unimportant or unattainable. Previous research has found that seeking healthcare is highly correlated to societal attitudes and personal income, making it unaffordable for many or putting those who want it in silence. We use data from the 2021 Wellcome Trust survey on Mental Health to analyze this by using graphs and table to analyze differences in mental health access for different groups, using R and other packages.We also predict the probability that a person belonging to several groups will seek out professional care. We find that personal wealth of an individual, as well as relative wealth of the country, increase the likelihood of a person getting care. We also find that gender, educational status, and employment status are also heavy indicators. This shows the elitism that still disallows many worldwide to get metal health care, and is a  display of how it is still not viewed seriosuly in the eyes of many.\\par \\textbf {Keywords:} mental Health, Global, Education, Wealth Inequality, Education, Science"
+abstract: "Mental Health care is a form of human health as important as physical care, however for many around the world, it is deemed as unimportant or unattainable. Previous research has found that seeking healthcare is highly correlated to societal attitudes and personal income, making it unaffordable for many or putting those who want it in silence. We use data from the 2021 Wellcome Trust survey on Mental Health to analyze this by using graphs and table to analyze differences in mental health access for different groups, using R and other packages.We also predict the probability that a person belonging to several groups will seek out professional care. We find that personal wealth of an individual, as well as relative wealth of the country, increase the likelihood of a person getting care. We also find that gender, educational status, and employment status are also heavy indicators. This shows the elitism that still disallows many worldwide to get metal health care, and is a  display of how it is still not viewed seriosuly in the eyes of many.\\par \\textbf {Keywords:} Mental Health, Global, Education, Wealth Inequality, Education, Science"
 output:
   bookdown::pdf_document2
 toc: FALSE
@@ -11,11 +11,27 @@ bibliography: references2.bib
 ---
 for abstract: The importance of mental health and prioritization of mental health care has seen a large increase in recent years, through the rise in education, income, and changing attitudes towards mental health. 
 
+
+```{r,include=FALSE}
+install.packages("rworldmap")
+install.packages("tidymodels")
+library("tidyverse")
+library("lme4")
+library(gridExtra)
+library(tidymodels)
+library(broom)
+library(rworldmap)
+```
+
+
 # Introduction
 
-Mental health care includes seeking medical or sociological treatment to improve one's emotional, psychological, or social well being. It influences cognition, perception, and behavior. Professional mental health care includes seeking treatment from a therapist, psychiatrist,psychotherapist, among others. In order to get a scope of the global perceptions of the importance of mental health and access to professional mental health care to develop better treatments [@citegallup],  the Wellcome Trust holds a periodic international survey on how people cope with mental health problems, and the role of scientific methods to find solutions to these problems.The Wellcome Global Monitor Survey dataset provides information on the demographic groups each surveyor belongs to, as well as their answers to key questions on their attitudes, opinions and access to mental health services and the science surrounding it. In this report, we seek to explain and predict the global relationship between seeking professional mental health care and belonging to different demographic and opinion groups, for the year 2021. We aim to predict this information using stratified dataset from IPUMS that contains key variables that are weighted. This report does not deal with getting mental health medication.
+Mental health care includes seeking medical or sociological treatment to improve one's emotional, psychological, or social well being. It influences cognition, perception, and behavior. Professional mental health care includes seeking treatment from a therapist, psychiatrist,psychotherapist, among others. In order to get a scope of the global perceptions of the importance of mental health and access to professional mental health care to develop better treatments [@citegallup],  the Wellcome Trust holds a periodic international survey on how people cope with mental health problems, and the role of scientific methods to find solutions to these problems.The Wellcome Global Monitor Survey dataset provides information on the demographic groups each surveyor belongs to, as well as their answers to key questions on their attitudes, opinions and access to mental health services and the science surrounding it. In this report, we seek to explain and predict the global relationship between seeking professional mental health care and belonging to different demographic and opinion groups, for the year 2021. We aim to use inference to have an idea of the probability of seeking help, using testing and training models with the key variables.This report does not deal with getting mental health medication.*predict using testing and trainign model*
 
-We obtained the dataset from the Wellcome Global Monitor Website [@citewebsite].  We loaded in, cleaned and analyzed the data using  `R` [@citeR], `dplyr` [@citedplyr], `tidyr` [@citetidyr], `haven` [@citehaven], and `tidyverse` [@citetidyverse] packages. Figures and tables were created with `ggplot2` [@citeggplot], `knitr` [@citeknit], `dplyr` [@citedplyr], `rworldmap` [@rworldmap], `gridExtra` [@citegridExtra] and `kableExtra` [@citekable]. The model was created with `lme4` [@citelme4]. We first created histograms and bar charts which showed the relationship between our main response variable and key explanatory variables. We then created the model, and a table and graph explaining the coefficients. We then created created line plots which showed the relationship between age, gender, and our response, as well as a map which showed the average probability that someone seeks professional mental health care in each country. We also created tables which showed the proportions of people who chose to seek help, as well as line graphs which showed the difference between the model on our dataset and that of the stratification dataset.  
+We obtained the dataset from the Wellcome Global Monitor Website [@citewebsite].  We loaded in, cleaned and analyzed the data using  `R` [@citeR], `dplyr` [@citedplyr], `tidyr` [@citetidyr], `haven` [@citehaven], `tidyverse` [@citetidyverse], `broom` [@citebroom] and `tidymodels` [@citetidymodels] packages. Figures and tables were created with `ggplot2` [@citeggplot], `knitr` [@citeknit], `dplyr` [@citedplyr], `rworldmap` [@rworldmap], `gridExtra` [@citegridExtra] and `kableExtra` [@citekable]. The model was created with `lme4` [@citelme4]. We first created histograms and bar charts which showed the relationship between our main response variable and key explanatory variables. We then created the model, and a table and graph explaining the coefficients. We then created created line plots which showed the relationship between age, gender, and our response, as well as a map which showed the average probability that someone seeks professional mental health care in each country. We also created tables which showed the proportions of people who chose to seek help, as well as used frequentist methods and test and training datasets and confusion matrix to predict the probability someone gets help using values of the responses.  *Put our testing and training stuff with the process and packages used, we make inference using frequentist*
+
+To check if the chosen models could be used to predict Happiness on independent data, we fitted the prospective final models into the test dataset. We checked that the datasets looked similar,test set conditions and assumptions were satisfied and that these assumptions were not too different from those of the training dataset. We checked the summaries of the test models and made sure they were similar to the training models. These included making sure they had similar coefficients and the same signs, similar significances, similar adjusted $R^2$, variation and problematic observations. If they were similar to those of the training model, then the model was validated and used as the final model.
+
 
 There is still an uphill battle to legitimize mental health care globally, as this report shows that less than half of those questioned worldwide sought out professional mental health treatment, with more people preferring to seek informal channels such as friends and family to solve their problems. The report also shows that men are much less likely to seek professional mental health care than women, most likely due to patriarchal conditions that persist worldwide. People with a lower level of education, unemployed or underemployed people, as well as a lower sense of relative income are also much less likely to seek or have access to mental health care, displaying inequalities in mental health care. People from less wealthy countries are also less likely to seek or have access to mental care, likely due to either financial reasons or persistence of outdated views. Those who do not believe in the science of mental health are also less likely to seek out care, as they either don't believe there is a problem, or that the problem can be solved. Finally, the older one is, the more likely that they seek out professional mental health care, however this likeliness drops at older ages.
 
@@ -25,16 +41,22 @@ While this survey provides valuables information on how the global population vi
 
 ## Data Source and Collection
 
-The dataset for this report comes from a 2020 to 2021 global survey [@citewebsite] performed by the Wellcome Trust, a British non-profit group that deals with health and well being. The survey is observes how people consider and cope with anxiety and depression, and explores the perceived role of science to find new solutions. The data contains 1000 observations from 113 countries and territories, and the survey was conducted via telephone interviews with nationally representative samples, in collaboration with Gallup Polls [@citegallup]. The survey asked these respondents several questions on their current and past mental state, access to care, thoughts on mental health as an individual and as part of a society, as well as questions on their demographic, income, and other classification groups. The options for most of the questions were "Yes", "No", or "Not sure/Refuse to respond".  In the dataset, these translate to numeric observations of 1, 2, or 99 respectively for each respondent. In the survey, demographic and classification questions having options of different groups, with the dataset containing these results as text categories. The survey only collected data on respondents aged 15 years or older. Non response was indicated as either a 99, or an `NA`. The original daataset has 119,088 observations, 89 variables, and was last accessed April 2nd, 2022. 
+The survey dataset for this report comes from a February 2020 to August 2021 global survey [@citewebsite] performed by the Wellcome Trust, a British non-profit group that deals with health and well being. The survey observes how people consider and cope with anxiety and depression, and explores the perceived role of science to find new solutions. The population is all humans on earth, and the sample contains 1000 observations from 113 countries and territories. The survey was conducted via telephone interviews with random, nationally representative samples in their local languages, in collaboration with Gallup Polls [@citegallup]. The survey data was then stratified by weighting for each nation's population and other demographic weights to be remove collection bias and be representative of the global population (cite methodology sheet). The weights were also post-stratified to adjust for non-responses. The survey collected information on respondents' answers to several questions on their current and past mental state, access to care, thoughts on mental health as an individual and as part of a society, as well as questions on their demographic, income, and other classification groups. The options for most of the questions were "Yes", "No", or "Not sure/Refuse to respond".  In the dataset, these translate to numeric observations of 1, 2, or 99 respectively for each respondent. In the survey, demographic and classification questions having options of different groups, with the dataset containing these results as text categories. The survey only collected data on respondents aged 15 years or older. Non response was indicated as either a 99, or an `NA`. The original dataset has 119,088 observations, 89 variables, and was last accessed April 2nd, 2022. 
+
+The post-stratification dataset for the survey data weighting adjustment comes from IPUMS International Service [@citeipums]. The IPUMS is a project from the U.S. Census Bureau to collect information on the global population and their characteristics.The IPUMS website contains decade-wide samples from various national censuses.  We selected the 2000s and 2010s data as they seemed to encompass all countries available.
+This census data was collected by stratified sampling. Stratified
+sampling breaks down the population into groups and subgroups, in which samples from the subgroup are surveyed. The sample are the nationals who were counted in the various censuses. The IPUMS international database seperated samples into households and individuals. The samples were stratified based on 154 observations in each group. The final dataset contains 7 variables and .... observations. As some variables in our main dataset are not demographic, not all variables in the main dataset are present in the stratification dataset. 
+
 
 ## Data Cleaning
 
+The dataset was mainly pre-cleaned for publication. 
 To choose our variables, we used the survey sheet stating the questions and their possible responses [@citesurvey], as well as the guidebook that converted the results to the dataset observations [@citeguide]. 
-Our research question aims to answer the question on mental health attitudes and situations in general, not those related to COVID19. We thus removed variables dealing with answers of COVID19 related questions. As our target response dealt with whether someone sought professional mental health care or not, we filtered out all observations for that variable that were missing. An important explanatory variable was whether someone sought out mental help from friend, so we also filtered out observations from that variable that were missing. We also dropped all missing variables from the employment status observation, for accurate model comparison.  We thus included variables that we believed could further help answer the main research question. These include whether the respondent sought help from friends, Age, gender, employment status, relative wealth, wealth of nation, belief in science behind mental health, education level, and comfort on speaking about mental health issues.  
+Our research question aims to answer the question on mental health attitudes and situations in general, not those related to COVID19. We thus removed variables dealing with answers of COVID19 related questions. As our target response dealt with whether someone sought professional mental health care or not, we filtered out all observations for that variable that were missing. An important explanatory variable was whether someone sought out mental help from friend, so we also filtered out observations from that variable that were missing. We also dropped all missing variables from the employment status observation, for accurate model comparison.  We thus included variables that we believed could further help answer the main research question. These include whether the respondent sought help from friends, Age, gender, employment status, subjective income, wealth of nation, belief in science behind mental health, education level, comfort on speaking about mental health issues, and country as an indentifier. We chose not to use objective income as we believe that well of someone thinks they are is more important to their well being than how well off they actually are. 
 
 ## Data Modification 
 
-We then modified the "Sought Help from professionals" and "Sought help from friends" variables by changing all "Not sure/Refuse to answer" responses to "No" responses by changing all "99" observations as "0". We also changed all "Yes" responses to "1". We also modified a variable dealing with comfortability about speaking on depression. This variable was modified bu changing all "Not Sure/Refused" and "Not comfortable" observations to "No" by modifying their numeric equivalents (99 and 3 respectively) to 0. The  "Very comfortable" and "Somewhat comfortable" observations were modified to 1. A variable dealing with how much the respondent believed science could explain feelings and emotions was modified by changing the "A lot" and "SOmewhat" observations to 1, and all other observations to 0. These previous variables were also all renamed from their IDs to more understandable variable names. The final dataset was formed from the previous variables chosen, as well as the modified variables. This final dataset included 23,969 rows and 11 columns, from 112 different countries.
+We then modified the "Sought Help from professionals" and "Sought help from friends" variables by changing all "Not sure/Refuse to answer" responses to "No" responses by changing all "99" observations as "0". We also changed all "Yes" responses to "1". We also modified a variable dealing with comfortability about speaking on depression. This variable was modified bu changing all "Not Sure/Refused" and "Not comfortable" observations to "No" by modifying their numeric equivalents (99 and 3 respectively) to 0. The  "Very comfortable" and "Somewhat comfortable" observations were modified to 1. A variable dealing with how much the respondent believed science could explain feelings and emotions was modified by changing the "A lot" and "SOmewhat" observations to 1, and all other observations to 0. These previous variables were also all renamed from their IDs to more understandable variable names. We modified the names of two observations in the country variable in order to include the countries' information on a map. The final dataset was formed from the previous variables chosen, as well as the modified variables. This final dataset included 23,969 rows and 11 columns, from 112 different countries.
 
 
 
@@ -44,16 +66,16 @@ We are interested in the the respondents' choice to seek professional mental car
 
 We see that overall, 57% of respondents worldwide chose not to seek therapy, leaving about 43% who did choose to seek this route. Compared to seeking health for physical problems, mental health care is still not a priority for many worldwide [cite] This could possibly be due to gender roles, elitism in mental health care and the cost of care, unavailability of care. This could also be caused by the respondents beliefs that mental health either is not important, does not exist, or that therapy is ineffective.
 
-```{r}
+```{r tabone}
 datamod %>%
   group_by(Help) %>%
   summarize(n=n(),)  %>%
   mutate(freq = n / sum(n))
 ```
 
-For the distribution of age, we see that most respondents were between the ages of 15 to 90, with a few outliers at 100. There seems to be a poisson distribution, or at the very least a heavily right skewed distribution, as most respondents were at the younger end of the age scale. This also means that the average age is higher than the median age of respondents. This means that either more youth were chosen to interviewed, or more youth responded. We see that many younger and middle aged people chose to not seek therapy, while many older people did. This could be due to care being more expensive, or more young respondents being from lower income countries. Most of those who chose not to seek therapy were younger, while the older the respondents got, the higher the count of those who sought therapy was. 
+In (Figure \@ref(fig:figone)) for the distribution of age, we see that most respondents were between the ages of 15 to 90, with a few outliers at 100. There seems to be a poisson distribution, or at the very least a heavily right skewed distribution, as most respondents were at the younger end of the age scale. This also means that the average age is higher than the median age of respondents. This means that either more youth were chosen to interviewed, or more youth responded. We see that many younger and middle aged people chose to not seek therapy, while many older people did. This could be due to care being more expensive and older people being more able to afford it, or more young respondents being from lower income countries. Most of those who chose not to seek therapy were younger, while the older the respondents got, the higher the count of those who sought therapy was. This also brings into question why there are age differences.
 
-```{r, message=FALSE,echo = FALSE, fig.cap = "Distribution of Age by Decision to seek Mental Care"}
+```{r figone, message=FALSE,echo = FALSE, fig.cap = "Distribution of Age by Decision to seek Mental Care"}
 
 # distribution of age by decision to seek care
 datamod %>%
@@ -65,121 +87,181 @@ datamod %>%
        fill = "Help") # grouping by skin tone
 ```
 
-# Model
 
-Our final model is $$ log(\frac{\hat{p}}{1-\hat{p}}) = \beta_0 + \beta_1x_{friends} + \beta_2x_{science} + \beta_3x_{age} + \beta_4x_{employment} + \beta_5x_{gender} + \beta_6x_{Education} + \beta_7x_{Income} + \beta_8x_{nationwealth}$$
+From (Figure \@ref(fig:figtwo)), we see these variables are binary variables, having only two possible options. 
 
-We chose these variables after a set of model comparisons which decided on this as the best model. 
+For Gender, we see that only about 30% of men seek therapy, contrasted to around 50% of women. This indicates that women are more likely to seek therapy; either due to them being more open with their emotions, or taking mental well being more seriously [cite]. As women are also more likely to get help for physical ailments, this indicates that men generally do not take well being to higher importance[cite]. It is clear that gender socialization has an effect on seeking therapy.  
 
-Friends is a binary variable indicating if someone sought mental help from a friend
-Science is a binary variable indicating if someone believes the science behind mental health industry
-Age is a continuous variable stating the age of the person. 
-Employment is a categorical variable indicating a persons employment status
-Gender is a binary variable indicating the gender of a person 
-Education is a categorical variable indicating the educational status of a person at the time of taking the survey
-Income is how good a person thinks their income is (not how their income actually is)
-Nationwealth is a categorical variable indicating the relative wealth of a respondent's nation.
+Taking into account beliefs in science, we see that those who believe in the science behind mental health and the ability of scientific methods to improve mental well being tend to seek therapy more often than those who don't. Around 47% of those who believe in mental health science seek therapy, while only about 30% of those who do not seek therapy.This is intuitive, as those who believe in its effects will choose to use it. However, it is surprising that the gap between these groups is quite small, as a sizable portion of those who do not believe in it still seek therapy, possibly for the spiritual aspects [cite].The rising amount of disinformation on mental health...  
 
-## Results
+We see that those who sought help from friends are also far more likely to seek therapy. Nearly 47% of those who sought help from friends also sought professional therapy, contrasted to only about 27% of those who did not seek help from friends sought help from therapy. This may be because those who know they have a problem and seek help from friends are likely to know the help of therapy, or be recommended therapy from said friends. While those that do not seek help from friends feel like they cannot talk about their issues, and do not wish to talk to a stranger either [cite].
 
-```{r,include=FALSE}
-# install.packages("rworldmap")
-library("tidyverse")
-library("lme4")
-```
+We should note that even among the groups that are sought therapy more, the total numbers of 50%, 47% , are still quite low. This brings into question why these numbers are low across the board, and other domineering economic and societal aspects that come into play. 
 
-
-```{r,include=FALSE}
-# filter mh6,mh7c and mh8c = 1
-wgm_full_wave2_public_file_final_1_csv = read_csv(here::here("Inputs/Data/wgm_full_wave2_public_file_final (1)_csv.csv"))
-data = wgm_full_wave2_public_file_final_1_csv %>%
-  select(-WP21757, -WP21758, -WP21759, -WP21760, -WP21761, -WP21768)
-
-data = data %>%
-  filter(!is.na(MH8A)) %>%
-  filter(!is.na(MH8C))
-
-data = data %>%
-  mutate(help = ifelse(MH8A == 1,1,0),friends = ifelse(MH8C == 2 | MH8C ==99,0,1), comfort = ifelse(MH5 == 3 | MH5 ==99,0,1),science = ifelse(MH2B == 1 | MH2B ==2,1,0))
-```
-
-
-```{r,include=FALSE}
-datamod = data %>%
-  select(COUNTRYNEW,help,friends,comfort, science, EMP_2010,Age,Gender,Education,Subjective_Income,wbi) %>%
-  filter(!is.na(EMP_2010)) # to make datasets the same size for comparison
-```
-
-```{r,include=FALSE}
-model = glm(help ~ factor(friends) + factor(comfort) + factor(science) + factor(EMP_2010) + Age + factor(Gender) + factor(Education) + factor(Subjective_Income) + factor(wbi),data = datamod, family = "binomial")
-```
-
-```{r}
-summary(model)
-```
-
-```{r,include=FALSE}
-model1 = glm(help ~ factor(friends) + factor(science) + Age + factor(EMP_2010) + factor(Gender)+ factor(Education) + factor(Subjective_Income) + factor(wbi),data = datamod, family = "binomial")
-```
-
-```{r}
-lmtest::lrtest(model1, model)
-```
-```{r}
-summary(model1)
-```
-
-```{r}
-datamod = datamod %>%
-  mutate(Help = ifelse(help ==1, "Sought Therapy","Did not seek therapy"))
-```
-
-
-
-
-```{r,echo=FALSE}
-ggplot(data = datamod, aes(x = factor(Gender), fill = Help)) +
+```{r figtwo }
+plot1 = ggplot(data = datamod, aes(x = factor(Gender), fill = Help)) +
   geom_bar(position = "fill") +
   scale_fill_grey() +
   theme_minimal() +
   labs(fill = "Get help", x = "Gender", y = "Proportion")
+
+
+plot4 = ggplot(data = datamod, aes(x = factor(science), fill = Help)) +
+  geom_bar(position = "fill") +
+  scale_fill_grey() +
+  theme_minimal() +
+  labs(fill = "Help Status", x = "Believe in Mental Science", y = "Proportion")
+
+
+plot6 = ggplot(data = datamod, aes(x = factor(friends), fill = Help)) +
+  geom_bar(position = "fill") +
+  scale_fill_grey() +
+  theme_minimal() +
+  labs(fill = "Help Status", x = "Sought Help in Friends", y = "Proportion")
+
+grid.arrange(plot1,plot4,plot6, ncol=2)
 ```
 
-```{r,echo=FALSE}
-ggplot(data = datamod, aes(x = factor(EMP_2010), fill = Help)) +
+From (Figure \@ref(fig:figthree)), we see that these variables are categorical variables, having a few possible observations. 
+
+For the employment status, we see that those who are employed full time for an amployer are the most likely to seek therapy, with about 45% of respondents in this group seeking therapy. This may be due to them having the funds and free time to seek therapy, as well as ability to switch if the therapy is not a good match. We see that the unemployed are the least likely to seek therapy, with about 30% of respondents in this group seeking therapy. This may be due to unemployed having less stability, and ability to afford the treatment [cite]. Those who work for themselves also have a low therapy search percentage, likely due to them being to busy or focusing on work to seek help, they are overworked [cite]. Those who are employed part time but do not want full time work are the most likely to seek therapy, likely as they are either older people that are happy and in touch with themselves and their mental state [cite]
+
+For the general wealth of nations, we see that people from wealthier nations are far more likely to seek out therapy than other nations, with about 63% of respondents from these nations seeking mental health care. The general trend is that lower income nations are less likely to seek out mental health care, with only 27% of people from lower middle income nations seeking therapy. This disparity could be that people from wealthier nations are more likely to have more disposable income and can afford therapy[cite], or have access to free or heavily subsidized mental health care[cite], as well as more mental health facilities[cite]. 
+
+Subjective income measures how wealthy a person feels they are, if they feel that they are comfortable enough to be in a particular income class. It does not mention their objective wealth. We see that those who live comfortably on thir income seek therapy more often than their less well- off counterparts. The percentage of the most subjectively well off who sought therapy are about 52% , compared to those finding it difficult to live off their income only seeking therapy 32% of the time. This is likely because the well off have more spare income to seek therapy, while the less well off choose to spend their money on the bare necessities. 
+
+For the level of education, we see that generally those with higher levels of education attained seek therapy more often. 50% of people who have have finished undergraduate studies seek professional mental health, compared to about 32% of those who only completed elementary school or less seeking therapy. This is likely as higher levels of education correlate to more income and more educated and updated beliefs on mental health science, which we have discussed earlier being positively correlated to seeking help. 
+
+As in the previous explanatory factors, even among the groups likely to seek therapy, the percentages are still rather low. This shows societal factors, not just demographic and economic factors, affect the decision to seek therapy. 
+
+```{r figthree}
+plot2 = ggplot(data = datamod, aes(x = factor(EMP_2010), fill = Help)) +
   geom_bar(position = "fill") +
   scale_fill_grey() +
   theme_minimal() +
   labs(fill = "Get help", x = "Employment Status", y = "Proportion")
-```
 
-```{r,echo=FALSE}
-ggplot(data = datamod, aes(x = factor(wbi), fill = Help)) +
+plot3 = ggplot(data = datamod, aes(x = factor(wbi), fill = Help)) +
   geom_bar(position = "fill") +
   scale_fill_grey() +
   theme_minimal() +
   labs(fill = "Get help", x = "wealth of nation", y = "Proportion")
-```
 
-```{r,echo=FALSE}
-ggplot(data = datamod, aes(x = factor(Help), fill = factor(science))) +
+plot5 = ggplot(data = datamod, aes(x = factor(Subjective_Income), fill = Help)) +
   geom_bar(position = "fill") +
   scale_fill_grey() +
   theme_minimal() +
-  labs(fill = "Science seek", x = "Help", y = "Proportion")
-```
+  labs(fill = "Help Status", x = "Subjective Income", y = "Proportion")
 
-```{r,echo=FALSE}
-ggplot(data = datamod, aes(x = factor(science), fill = Help)) +
+plot6 = ggplot(data = datamod, aes(x = factor(Education), fill = Help)) +
   geom_bar(position = "fill") +
   scale_fill_grey() +
   theme_minimal() +
-  labs(fill = "Get help", x = "Employment Status", y = "Proportion")
+  labs(fill = "Help Status", x = "Level of Education", y = "Proportion")
+
+grid.arrange(plot2,plot3,plot5,plot6, ncol=2)
 ```
 
 
+# Model
 
-```{r,echo=FALSE}
+```{r,include=FALSE}
+# Model with societal comfort
+model = glm(help ~ factor(friends) + factor(comfort) + factor(science) + factor(EMP_2010) + Age + factor(Gender) + factor(Education) + factor(Subjective_Income) + factor(wbi),data = datamod, family = "binomial")
+
+# model without societal comfort
+model1 = glm(help ~ factor(friends) + factor(science) + Age + factor(EMP_2010) + factor(Gender)+ factor(Education) + factor(Subjective_Income) + factor(wbi),data = datamod, family = "binomial")
+
+# test to check model 1 explains variability in the response just as well as model 2
+lmtest::lrtest(model1, model)
+
+summary(model1)
+```
+
+Our logistic regression model is $$ log(\frac{\hat{p}}{1-\hat{p}}) = \beta_0 + \beta_1x_{friends} + \beta_2x_{science} + \beta_3x_{age} + \beta_4x_{employment} + \beta_5x_{gender} + \beta_6x_{Education} + \beta_7x_{Income} + \beta_8x_{nationwealth}$$
+
+*label equation like they did in paper*
+The output of this logistic  model gives the probability of whether or not a person plans to seek professional help for their mental problems. 
+
+To get the probability,  sum of the right side of the and plug it
+into: 
+
+
+A model comparison test has chosen these variable in best explaining the response, We use a binomial model as our main response, the decision to seek therapy or not, is binary in nature. The response in the model is the probability that a person chooses to seek therapy based on their status in the explanatory variables. 
+
+Our original model included societal comfort on talks of mental health, but this was shown not to be significant in testing. However most studies [cite] have found this to be quite an important factor. This means that it is not very important in the presence of other factors which indirectly deal with societal comfort on talking about mental health.
+
+For the report, we focus on these 8 groups and demographics of the respondents;
+
+* Our response, help, is a binary variable with a value of 1 if the person suck professional mental health and 0 if they did not.
+
+* Friends is a binary variable indicating if someone sought mental help from a friend.
+
+* Science is a binary variable indicating if someone believes the science behind mental health and mental health care.
+
+* Age is a continuous variable stating the age of the person.
+
+* Employment is a categorical variable indicating a persons employment status. The observations include Employed for an employer, self employed, employed part time willingly, employed part time unwillingly, unemployed, and out of the workforce. 
+
+* Gender is a binary variable indicating the gender of a person.
+
+* Education is a categorical variable indicating the highest level of education a respondent had  at the time of taking the survey. Observations include Primary School, Secondary School and Tertiary Education. 
+
+* Income indicates how comfortable one is that their income can satisfy their needs. Observations include Living Comfortably on Income, Getting by on Income, Finding it hard to get by on income, and finding it very hard to get by on income.
+
+* Nationwealth is a categorical variable indicating the relative wealth of a respondent's nation. Observations include lower income, lower-middle income, upper-middle income, and high income. 
+
+* $\beta0$ is the intercept, and each $\beta_j$ represents a coefficient. 
+
+We decided to check if seeking help from friends affects the choice to seek help from therapists and other mental care providers, as several studies such as (cite) have found positive links between seeking help from friends and seeking help from professionals. This is because those who have friends often have a stable support system and are more able to manage therapy. (https://doi.org/10.1007/BF00757078) also links the importance of friends in a  better understanding of the mental system as they are a gateway. 
+
+We used science as a variables as we believe that those who do not believe in mental health science or are averse to therapy are less likely to seek these professional avenues. Those who do not believe in mental health are also more likely to come from societies that stigmatize talking about such issues. Disbelief in science is also corrleated to poor mental health literacy, which leads to less help seek (https://doi.org/10.1186/1471-2458-8-125).
+
+We used age as a variable, as a higher age is often tied with higher income and social standing, thus leading to higher availability of funds to seek professional help. According to(https://doi.org/10.1080/13607860600641200),older ages are associated with a higher willingnes to seek help. Older adults exhibited more favourable intentions to seek help from primary care physicians than younger adults, a finding that was not explained by age differences in attitudes. We wanted to see this trend in the model.
+
+We use gender in the model as  The impact if gender on mental health help has been widely discussed, with many conclusions that women are more likely to seek mental health help than men. (https://doi.org/10.1080/13607860600641200) states that Women exhibited more favourable intentions to seek help from mental health professionals than men, likely due to their positive attitudes concerning psychological openness.
+[@citeworldhealth] states that in industrialized countries, women are consistently more likely to use mental health services than men. Men only seek help at lager stages after symptoms get severe. 
+
+We used income as a larger income correlates to a higher ability to pay for health care, irrespective of country. We also decided to use this variable as higher relative income is often tied to higher social standing, and (https://doi.org/10.1521/jscp.2016.35.9.722) states a higher social standing is tied to higher well being. People with higher mental well being have a higher willingness to seek help when there are problems.  In reverse, low income people have less acesss to mental health care due to unaffordability or unavailability (https://doi.org/10.1542/peds.2015-1175). 
+
+Employment is linked to income, as the unemployed and underemployed have less disposable income to afford therapy compared to their employed or self employed counterparts. However we used this variable seperate from income as problems like overworking of the employed, and how empployers are less willing to pay for mental health costs unlike the self employed (https://www.jstor.org/stable/44995919), and the general rising health problems of the overworked employed that part time workers may not relate to (@citeworkhealth). 
+
+We focused on education level, as the college educated and those with more mental health literacy are more likely to not have misconceptions and stigma on mental health and care (cite). Also, the more educated are more likely to know these problems and fixing avenues exist in the first place, instead of labeling the problems as personal weakness or spiritual factors. Among people college educated are more likely to seek help than high school (cite). 
+
+Finally, we focus on the wealth of a nation, as it has been extensively studied that lower and middle income nation citizens are far less likely to seek professional help than citizens of industrialized nations. This is due to lower income of these citizens, poorer education on the benefit of mental health (https://doi.org/10.1016/S0140-6736(07)61263-X), and less availability of health facilities (https://doi.org/10.1371/journal.pone.0088437). However, industrialized countries like japan and korea still have stigma in mental health.
+
+## Results
+
+(Figure \@ref(fig:figfour)) shows the coefficients from the model. The coefficients have been exponentiated in order to be interpretable, so this figure shows $e^{\beta}$ The coefficients explain the expected increase in the odds of seeking help for a variable, provided other variables stay constant. The error bars also show the lower and upper bounds of the estimates, to give a full plausible range of values that the coefficient could take. A value of 1 here means that the probability of seeking help are just as likely when the respondent is in this group than when they are nit. Coefficients with negative values mean less than 1 mean that being part of the group the variable represents makes the respondent less likely to seek help, while values more than 1 means the respondent is more likely to seek professional mental health care if they are part of this group. For example, We see the odds of women seeking help is about 1.2 times that of men, and the odds of upper income citizens seeking help is about 1.75 times that of the lowest income nations citizens. On the other hand, we see that the odds that someone who is finding it very difficult to get by on income gets mental help is only 0.75 times that of someone living comfortably on their income. *put some explainignstuff here*
+
+```{r, figfour}
+# coefficient estimates 
+coefficients <- broom::tidy(model1, conf.int = T)
+coefexp = coefficients %>%
+  mutate(estimate = exp(estimate),
+         conf.low = exp(conf.low),
+         conf.high = exp(conf.high))
+
+coefexp %>% ggplot(aes(estimate, term)) +
+  geom_point() +
+  geom_errorbar(aes(xmin = conf.low, xmax = conf.high)) +
+  labs(title = "Coefficient Estimates",
+       x = "Estimate", y = "Coefficient") +
+  theme(axis.text.y = element_text(size = 5))
+```
+(Table \@ref(fig:tabtwo)) shows the estimates from (Figure \@ref(fig:figfour)) in numerical form, as well as the range of plausible values and the p values. We see that although some individuals levels in the factors are not significant for the response, overall the variable is important to understand whether someone chooses to seek mental health care. 
+
+```{r tabtwo}
+knitr::kable(coefexp,
+             caption = "Coefficients from the Model",
+             digits = 2) %>% 
+  kableExtra::kable_styling(latex_options = "scale_down")
+```
+
+(Figure \@ref(fig:figfive)) shows the relationship between age and the decision to seek mental health, segmented by gender. We see that due to the generally increasing trend, the older a person gets, the more likely they are to seek mental health care. The smoothed line also shows the range of plausible values, which are also consistently increasing with age. We also see that at all ages, women are consistently more likely to seek mental help than men are. We also see that woman at older ages are also seeking mental help, while those for men are completely missing. This may be due to collection problems with the dataset or the method of making the plot, and not with the actual global population of men. This shows the stark age differences in mental health care, where (cite) states that due to... old are more likely to seek help than young, and women are more likely to seek help then men due to being more emotionally aware with themselves. 
+
+
+```{r figfive, echo=FALSE}
 # cite this code
 
 datamod = datamod %>%
@@ -205,34 +287,14 @@ ggplot(emplogit1, aes(x = midpoint, y = emplogit, color = Gender)) +
   scale_color_brewer(palette = "Dark2")
 ```
 
-
-
-```{r, message=FALSE,echo = FALSE, fig.cap = "Distribution of sleep flags by skin tone"}
-# distribution of sleep flags by skin tone
-datamod %>%
-  ggplot(data =., aes(x=Age, fill = Help)) +
-  geom_histogram()+ 
-  theme_minimal() +
-  labs(x = "Age",
-       y = "Count",
-       fill = "Help") # grouping by skin tone
-```
+(Figure \@ref(fig:figseven)) shows the average probability of citizens who decided to seek mental health care for their depression/anxiety, by country. We see that the results wildly differ by country, but countries in the same continent tend to have roughly similar probabilities of seeking mental health care. We see that most countries in western europe and the anglosphere have very high probabilities of seeking mental health, being 70% or more. This is most likely due to their first world status, with availability of health facilities, user paid health care, or general levels of wealth. However for many ex-communist and developing countries, the average probabilities are much lower, ranging from below 70% to about 11%. South America has average levels of probability,ranging from 40%-55%, central, south east Asia range in probabilities but none are very high. This is indicative of the lower levels of income, less facilities, misconceptions on mental health, and general traditions that look down on such care (cite). Africa also has low probabilities of getting care for the same reasons stated (cite Africa problems) with the exceptions of Mali and south Africa, the latter likely being as it a relatively rich nation. 
+However it should be noted that high income, developed nations like japan and south korea do not have high average probabilities of seeking mental health; japan's probability is around the same as India's. This indicates that there is most likely social stigma around seeking care despite the developed health care system (cite japan or korea not being good with care)
 
 ```{r,include=FALSE}
-datamod = datamod %>%
-  mutate(COUNTRYNEW = str_replace_all(COUNTRYNEW,"Congo Brazzaville","Republic of Congo" ))
-
-datamod = datamod%>%
-  mutate(COUNTRYNEW = str_replace_all(COUNTRYNEW,"Bosnia Herzegovina","Bosnia and Herzegovina")) 
-
 country = datamod %>%
   group_by(COUNTRYNEW) %>%
   summarize(meanhelp = mean(help))
-```
 
-
-
-```{r,include=FALSE}
 library(rworldmap)
 joinData <- joinCountryData2Map(country,
                                  joinCode = "NAME",
@@ -240,35 +302,54 @@ joinData <- joinCountryData2Map(country,
                                  verbose = TRUE)
 ```
 
-
-```{r, echo=FALSE, fig.cap = "Percentage of Those who sought help in Each Country"}
+```{r figseven, echo=FALSE, fig.cap = "Percentage of Those who sought help in Each Country"}
 theMap <- mapCountryData( joinData, nameColumnToPlot="meanhelp", addLegend=FALSE,  mapTitle=" ", borderCol="black", missingCountryCol="white", oceanCol="lightblue")
 do.call( addMapLegend, c(theMap, legendWidth=1, legendMar = 2))
 ```
+To make inference on our model and use the model to predict values for other samples, 
 
-## Model Section 
-```{r}
-# coefficient estimates 
-coefficients <- broom::tidy(model1, conf.int = T)
+```{r, include = FALSE}
+modelgraph <-
+  augment(model1,
+          data = datamod,
+          type.predict = "response")
 
-coefficients %>% ggplot(aes(estimate, term)) +
-  geom_point() +
-  geom_errorbar(aes(xmin = conf.low, xmax = conf.high)) +
-  labs(title = "Coefficient Estimates",
-       x = "Estimate", y = "Coefficient") +
-  theme(axis.text.y = element_text(size = 5))
+modelgraph %>%
+  mutate(help = factor(help)) %>%
+  ggplot(aes(x = , y = .fitted, color = help)) +
+  geom_jitter(width = 0.01, height = 0.01) +
+  labs(x = "Number of cars that were seen",
+       y = "Estimated probability it is night",
+       color = "Actually Sought Help") +
+  theme_classic() +
+  scale_color_brewer(palette = "Set1")
+
 ```
-To interpret we exponentiate the coefficients, interpret intercept!
-```{r}
-coefexp = coefficients %>%
-  mutate(estimate = exp(estimate),
-         conf.low = exp(conf.low),
-         conf.high = exp(conf.high))
 
-knitr::kable(coefexp,
-             caption = "Coefficients from the Model",
-             digits = 2) %>% 
-  kableExtra::kable_styling(latex_options = "scale_down")
+Testing model's predictability. check the sensitivyt and specificity 
+Doesnt predict the model well, this may because there is still a lot of unexplained variation and undertsanding the root cause behind mental health is still quite difficult to do. This brings to light how getting care may be unique to the individual. It predicts well, but not very well with only 2206/1068 % of predictions when not seek help is correct and 965/555+965 when did seek help correct. This is a total of %correct1xproportion1 + %correct0xproportion0 
+
+965 true positives and 555 false positives. To compute sensitivity, divide true positives from number of total positives (965/1068+965). specificity is to detect negative cases; true negative over total negative 2206/(2206+555). false positive is when preduction says its positive but truth is negative. If i use predictions on ture model, how often do i detect correctly? Mention if im happy with the resutls, am i conifident using this mdoel to make predictions and if not say why
+```{r}
+# splitting dataset into testing and training for prediction 
+set.seed(438)
+datamod_split <- 
+  initial_split(data = datamod, 
+                prop = 0.80)
+train <- training(datamod_split)
+test <- testing(datamod_split)
+
+datamodtidymodels =
+  logistic_reg(mode = "classification") %>%
+  set_engine("glm") %>%
+  fit(factor(help) ~ factor(friends) + factor(science) + Age + factor(EMP_2010) + factor(Gender)+ factor(Education) + factor(Subjective_Income) + factor(wbi),
+      data = train)
+
+datamodtidymodels %>%
+  predict(new_data = test) %>%
+  cbind(test) %>%
+  conf_mat(truth = help, estimate = .pred_class)
+
 ```
 
 
@@ -276,22 +357,67 @@ knitr::kable(coefexp,
 
 ## Bias and Ethical Concerns
 
+only females and males included,the experiences of others are not.
+
+only collected data in anxiety/depression, far more mental illnesses available, these people who also suffer are left out
+
+bias from removing out so many observation, if observations were not dropped randomly there is bias and were not getting the true results
+
 ## Data Collection Concerns 
 Post strat data likely out of date
+
+The survey does encounter some weaknesses though. The major weakness it encounters is that the survey
+data can be prone to sampling bias. Since the counties and cities are randomly selected, the city selected
+could have had a more republican or democratic leaning population. Since they could be sampling  high
+proportions of supporters for one party, the results for that city or even that state could be skewed.
+
+One major weakness that the IPUMS data encounters is that it is prone to people submitting fake results.
+When cleaning our data we encountered many observations where 2-year-olds were making millions of dollars.
+This is an issue that is annoying but simple to fix, as we can just filter out the fake responses and focus on
+the correct ones. The difficult issue is that sometimes we cannot be sure which data is real or fake, there are
+some obvious ones like children being millionaires but other incorrect responses just have to be kept in the
+data, so we cant know the true responses. 
+
+
+data didnt state that all who sought therapy wereanxious, depressed, etc
+
 
 The Wellcome Global Monitor aimed to find out how important mental health is to people across the globe and their views on science’s role in addressing mental health problems. It also provides an insight into the actions people with anxiety or depression take to feel better. Many of the most commonly reported methods do not yet have a robust evidence base, suggesting there are ripe areas of research for mental health scientists as they work to develop the next generation of treatments.
 
 most other reports of similar nature says old less liekly to seek, old more likely to seek here because there were few respondents, and the few respondents were more likely to already care aboyt mental stuff. 
 ## Gender and Mental Health Access
+This could also be due to patriarchical expectations of men to suck up their problems.
 
+These findings suggest the need for education to improve men's help-seeking attitudes and to enhance older adults’ willingness to seek specialty mental health services.
+
+Many studies from in dus tr ial ised countries report that
+women are con sist ent ly more likely to use out pa tient
+mental health services than are men. Men may seek
+care at a later stage after the onset of symp toms, or
+delay until symptoms become severe. 
+states that men dont seek because theyre less in touch with their emotions. when theyre more in touvh theyre as likley to seek help as women, men need more help in society. 
+
+
+Gender socialization
 ## Income and Mental Health Access
+Poor spend momey on bare necessities, poor also likely to not see mental health as serious enough to spend their money on. 
+stability, can afford it and can afford to seek better options if things go wrong. This is counterintuiriuve as those who are uneployed or underemployed often suffer from anxiety/depression, which they cannot affrod
 
+Drake, R., & Wallach, M. (2020). Employment is a critical mental health intervention. Epidemiology and Psychiatric Sciences, 29, E178. doi:10.1017/S2045796020000906
+talk about this!
 ## Education and mental health access
 
 Tackling both science and education variables
 
+even in presence of other factors, edication is still important, why? Even the lower eduated still have 32% seeking help, explain this (first, world subsidixed, but lower income countries have more low education people!)
+
 ## Nation Differences
 
+free or heavily subsized helathcare, healthcare taken more seriously due to higher education, more opportunities for mental health facilities, brain drain of good mental health scientists to first world narrions. 
+
+It is known that even in richer countrues, only first world nations still take mental health seriously. richer nations that are more religious, are richer people in poorer nations, still havr the beliefs of their societies that mental health isnt improtsnt.
+
+also use that global map data to talk about nation differences! global differences in health, imperaliasm, backwards beliefs, etc.
 ## Views of Mental Health in Society 
 
 # Weaknesses and Next Steps 
@@ -300,9 +426,29 @@ stratification dataset contains many 2000s variables as there was no info for 20
 It doesnt actually say whether they dont want to get or thet cant get help. 
 
 we put those who put 99 as a no, even though it could be a yes. 
+
+next: focus in covid stuff, focus on other possible mental illnesses
+
+Our model does have some weaknesses, since the output must be binary, we cannot account for other
+candidates or a person deciding not to vote. This issue isn’t too large because our main goal is to determine
+which of the two main candidates will be chosen by the people of America. Another weakness we do encounter
+with our model and multi-level regression with post-stratification is that it has a strong dependence on the
+survey data. This is a weakness because if the survey has any gaps or there are any tweaks we need to make,
+it can change the course of results.
+
+
 # References
 https://wellcome.org/reports/wellcome-global-monitor-mental-health/2020/executive-summary
 
 https://cms.wellcome.org/sites/default/files/2021-11/WGM_Full_Questionnaire.pdf
 
 https://cms.wellcome.org/sites/default/files/2021-10/wgmdata-mental-health-data-dictionary-user-guide.docx
+
+@article{world2002gender,
+  title={Gender and mental health},
+  author={World Health Organization and others},
+  year={2002},
+  publisher={World Health Organization}
+}
+
+@article{workhealth, title={Mental health and employment: much work still to be done}, volume={194}, DOI={10.1192/bjp.bp.108.055111}, number={3}, journal={British Journal of Psychiatry}, publisher={Cambridge University Press}, author={Harvey, Samuel B. and Henderson, Max and Lelliott, Paul and Hotopf, Matthew}, year={2009}, pages={201–203}}
