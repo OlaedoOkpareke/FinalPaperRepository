@@ -3,31 +3,14 @@ title: "Majority Worldwide Do not Seek Mental Health Care: Access to and Belief 
 author: "Olaedo Okpareke"
 thanks: 'Code and data are available at: https://github.com/OlaedoOkpareke/FinalPaperRepository' 
 date: "`r format(Sys.time(), '%d %B %Y')`"
-abstract: "Mental Health care is a form of human health as important as physical care, however for many around the world, it is deemed as unimportant or unattainable. Previous research has found that seeking healthcare is highly correlated to societal attitudes and personal income, making it unaffordable for many or putting those who want it in silence. We use data from the 2021 Wellcome Trust survey on Mental Health to analyze this by using graphs and table to analyze differences in mental health access for different groups, using R and other packages.We also predict the probability that a person belonging to several groups will seek out professional care. We find that personal wealth of an individual, as well as relative wealth of the country, increase the likelihood of a person getting care. We also find that gender, educational status, and employment status are also heavy indicators. This shows the elitism that still disallows many worldwide to get metal health care, and is a  display of how it is still not viewed seriosuly in the eyes of many.\\par \\textbf {Keywords:} Mental Health, Therapy, Global, Education, Wealth Inequality, Education, Science,Gender"
+abstract: "Mental Health care is a form of human health as important as physical care, however for many around the world, it is deemed as unimportant or unattainable. Previous research has found that seeking healthcare is highly correlated to societal attitudes and personal income, making it unaffordable for many ir putting those who want it in silence. We use data from the 2021 Wellcome Trust survey on Mental Health to analyze this by using graphs and tables to evaluate differences in mental health access for different groups, using R and other packages. We also predict the probability that a person belonging to several groups will seek out professional care. We find that personal income of an individual, as well as relative wealth of the country, increase the likelihood of a person seeking care. We also find that gender, educational status, and employment status also affect this choice. This shows the elitism that still disallows many worldwide to get metal health care, and is a  display of how it is still not viewed seriosuly in the eyes of many.\\par \\textbf {Keywords:} Mental Health, Therapy, Global, Education, Wealth Inequality, Education, Science,Gender"
 output:
   bookdown::pdf_document2
 toc: FALSE
 bibliography: references2.bib
 ---
-for abstract: The importance of mental health and prioritization of mental health care has seen a large increase in recent years, through the rise in education, income, and changing attitudes towards mental health. 
 
-In poorer areas mental health access still stigmatised in poor areas, or they dont have good perceptions of mental health. ALso people who dont think its a real sicence also wouldnt wamt to find it. Therapy not as available in some coutnries
-limitations: even people who arent sad may seek therapy. i havent yet filtered to those actually depressed. I put thise who dont know as "no" too. There may be reasons they say they dont know, theyre oppressed to hae theri mental health etc, so their true answer isnt no. I generalized very much believ in science and some believ in sicence in the same category. is this really a limitation though? i didnt put this as limitiation for religion in previous paper. 
 
-why didnt they choose mental care? couldnt afford it or didnt believe in it. two discussions: views of mental health in society and income
-. Our report is carried out using R (R Core Team [2019]), and
-the library Tidyverse (Wickham et al. [2019]) was used the most during the report. The report was then
-compiled using R markdown (Allaire et al. [2020])
-
-the ... gathers data on those whi have fwlt anxious or who their friends have felt anxious, or have ever felt anxious inn thier lives to gather data on their beliefs, demographics, and things they sought to improve. We are interetsed in out of the availbale alternatives to soother you, how many sought profesional help e.g therapy. psycchiatyr, etc. to se how important mental health is to the people, as well as the availability of metnal health services. 
-
-The Wellcome Global Monitor aimed to find out how important mental health is to people across the globe and their views on science’s role in addressing mental health problems. It also provides an insight into the actions people with anxiety or depression take to feel better. 
-
-what does this dataset help pereptuate? put in intro and dissussion. 
-
-the youngest age is ..  and the oldest is ...
-
-include actual justifications for the variables
 ```{r,include=FALSE}
 
 # loading in relevant libraries
@@ -58,7 +41,7 @@ We obtained the dataset from the Wellcome Global Monitor Website [@citewebsite].
 
 There is still an uphill battle to legitimize mental health care globally, as this report shows that less than half of those questioned worldwide sought out professional mental health treatment, with more people preferring to seek informal channels such as friends and family to solve their problems. The report also shows that men are much less likely to seek professional mental health care than women, most likely due to patriarchal conditions that persist worldwide. People with a lower level of education, not gainfully employed, as well as a lower sense of relative income are also much less likely to seek or have access to mental health care, which reveals the inequalities in getting adequate care for the less privileged. People from less wealthy countries are also less likely to seek or have access to mental care, likely due to either financial reasons or persistence of outdated views. Those who do not believe in the science of mental health are also less likely to seek out care, as they either do not believe there is a problem with their mental state, or that the problem can be solved. Finally, the older one is, the more likely that they seek out professional mental health care, however this likeliness drops at older ages.
 
-While this survey provides valuables information on how the global population views mental health, mental health care, and the access to such care, biases and collection errors could provide an incorrect view on the true state of mental health care access and acceptance. The data does not collect information on some marginalized groups,thus removing their experiences with accessing mental care due to their status,further propagating their discrimination in society. This is because the data only collects the statistics but not the causes, and explanations behind these statistics [cite]. The data collection also helps propagate preconceived biases against low income and less educated people as being ignorant about their health. The dataset reveals global societal problems and reveals negative biases, such as the gender gap in professional mental health access caused by patriarchal views [https://doi.org/10.1007/s00127-015-1038-x], which translates to other negative effects on society such as an increase in suicides. The decrease in mental health access for the lower educated, the unemployed, and the less wealthy reveals the lingering problem of inaccessibility of health care for the lower classes due to high prices and elitism. It also brings to light the lack of education on the benefits of mental health, which are subjective and cannot be physically seen, leading to it not being seen as legitimate as physical health care. The fact that citizens of lower income nations have lower odds of seeking mental health reveals the poor mental health infrastructure in developing nations, leading to unavailability of these facilities in areas where they are needed. The reports shows the need for more education on the benefits of mental health, and the destigmatization of mental health and victims of the illnesses in these countries. There are also concerns about biases in data collection, as well as the rise of false information on mental health and its consequences. 
+While this survey provides valuables information on how the global population views mental health, mental health care, and the access to such care, biases and collection errors could provide an incorrect view on the true state of mental health care access and acceptance. The data does not collect information on some marginalized groups,thus removing their experiences with accessing mental care due to their status,further propagating their discrimination in society. This is because the data only collects the statistics but not the causes, and explanations behind these statistics. The data collection also helps propagate preconceived biases against low income and less educated people as being ignorant about their health. The dataset reveals global societal problems and negative biases, such as the gender gap in professional mental health access caused by patriarchal views [@Pattyn2015], which translates to other negative effects on society such as an increase in suicides. The decrease in mental health access for the lower educated, the unemployed, and the less wealthy reveals the lingering problem of inaccessibility of health care for the lower classes due to high prices and elitism. It also brings to light the lack of education on the benefits of mental health, which are subjective and cannot be physically seen, leading to it not being seen as legitimate as physical health care. The fact that citizens of lower income nations have lower odds of seeking mental health reveals the poor mental health infrastructure in developing nations, leading to unavailability of these facilities in areas where they are needed. The report shows the need for more education on the benefits of mental health, and the destigmatization of mental health and victims of the disorders in these countries. It also shows the need for more widespread and affordable healthcare, as well as the of traditional beliefs and expectations on gender. There are also concerns about biases in data collection, as well as the rise of false information on mental health and its consequences. 
 
 # Data
 
@@ -100,7 +83,7 @@ datamod %>%
 
 From (Figure \@ref(fig:figtwo)), we see the following variables are binary, having only two possible options. 
 
-For Gender, we see that only about 30% of men seek therapy, compared to around 50% of women. This indicates that women are more likely to seek therapy; either due to them being more open with their emotions, or taking mental well being more seriously [@Pattyn2015. As women are also more likely to get help for physical ailments, this indicates that men generally do not place high importance in their well being [@citefamily]. It is clear that gender socialization has an effect on seeking therapy.  
+For Gender, we see that only about 30% of men seek therapy, compared to around 50% of women. This indicates that women are more likely to seek therapy; either due to them being more open with their emotions, or taking mental well being more seriously [@Pattyn2015]. As women are also more likely to get help for physical ailments, this indicates that men generally do not place high importance in their well being [@citefamily]. It is clear that gender socialization has an effect on seeking therapy.  
 
 When looking at beliefs in the science behind mental health, we see that those who believe in this science and the ability of scientific methods to improve mental well being tend to seek therapy more often than those who don't. Around 47% of those who believe in mental health science seek therapy, while only about 30% of those who do not seek therapy.This is intuitive, as those who believe in its effects will choose to use it. However, it is surprising that the gap between these groups is quite small, as a sizable portion of those who do not believe in it still seek therapy, possibly as they believe in some non-scientific aspects [@spirit].
 
@@ -368,7 +351,7 @@ do.call( addMapLegend, c(theMap, legendWidth=1, legendMar = 2))
 
 (Figure \@ref(fig:figseven)) shows the table of our predicted values from running the model compared to the true values, to test the model's predictability. The table shows the number of predicted values for each observation, as well as the true value of that observation. We do this to make sure that the model is good enough to be used on other samples of the global population.
 
-We see that the proportion of predictions that correctly predicted that the respondent sought help is 0.475 (also known as the sensitivity), while the proportion of predictions that correctly predicted that the respondent would not seek help is 0.79 (also known as the specificity). This means that our model is far more likely to predict that the respondent did not seek help, than our results in (Tab \@ref(fig:tabone)) would indicate. Thus our predictive model seems to be biased towards 0. The total predictive proportion is 0.475 x 0.43 + 0.79 x 0.57 = 0.654, so it correctly predicts overall results about 65.4% of the time. Thus our model is not very good at predicting the probability that someone seeks help, and should not be used to predict this on other samples. This also indicates that the decision to seek help may be due to other personal reasons inherent to the individual that cannot be determined by what group they fit into, and shows that there is a lot of work to get the root behind these decisions and progression of mental health acceptance in general. 
+We see that the proportion of predictions that correctly predicted that the respondent sought help is 0.475 (also known as the sensitivity), while the proportion of predictions that correctly predicted that the respondent would not seek help is 0.79 (also known as the specificity). This means that our model is far more likely to predict that the respondent did not seek help, than our results in (Tab \@ref(fig:tabone)) would indicate. Thus our predictive model seems to be biased towards 0. The total predictive proportion is `(0.475 x 0.43) + (0.79 x 0.57) = 0.654`, so it correctly predicts overall results about 65.4% of the time. Thus our model is not very good at predicting the probability that someone seeks help, and should not be used to predict this on other samples. This also indicates that the decision to seek help may be due to other personal reasons inherent to the individual that cannot be determined by what group they fit into, and shows that there is a lot of work to get the root behind these decisions and progression of mental health acceptance in general. 
 
 ```{r}
 # splitting dataset into testing and training for prediction 
@@ -393,70 +376,65 @@ confusion = datamodtidymodels %>%
 confusion
 ```
 ```{r,eval=FALSE}
-# try later
-confusion %>%
+# table for the confusion matrix as it cannot be converted to tabular form
+
+df <- data.frame (Prediction  = c(" ", "Did Not seek Therapy", "Sought Therapy"),
+                  Truth = c("Did Not seek Therapy", 2206, 555),
+                  Truth = c("Sought Therapy",1068,965)
+                  )
+
+df %>%
   knitr::kable() %>% 
   kable_styling(latex_options = "HOLD_position")
 ```
 
-```{r}
-as.table(confusion)
-```
+
 
 # Discussion
 
 ## Bias and Ethical Concerns
-As this data is based on people and theiur personal experiences with a very sensitive topic, there are likely to be some ethical implications that could limit the true accuracy of our data. 
 
-A problem with the original data source is that there are only two genders listed, male and female. However there are many different gender identities internationally, which brings the problem that even if this is supposed to be a dataset fr a global issue, the way that the data was collected was still eurocentric. These different gender identities could also come with their own experiences, mental challenges and hinder their decision to seek help )(@Tabaac2017). As these different gender identities and their experiences are not included in the original survey, it hinders both the accuracy and the main points that the Wellcome Trust intended to make. Gender non-conforming people are often ridiculed, looked down and not allowed to progress in their society due to the effects of colonialism (cite), in such a way that they were not included in a survey specifically intended for that purpose. Even if the data did include an 'other' option, that groups a lot of different gender identities together; genders that are completely different from each other. 
+As this data is based on people and their personal experiences with a very sensitive topic, there are likely to be some ethical implications that could limit the true accuracy of our data. 
 
-The dataset only collected data on anxiety and depression and how they affect a respondent's worldview. They did not include different common but also debilitating mental illnesses such as Obsessive Compulsive Disorder, ADHD and others. Not including these mental illnesses when conducting the survey promotes the further exclusion of people with these illnesses from developing treatment, and also hinders them when these mental illnesses are also common. It also perepetuates the myth that depression and anxiety are the only two valid illnesses as they are the ones that apear in popular emdia the most, depsite other mentlal ilnesses being very common and affecting the lives of millions worldwide. 
+A problem with the original data source is that there are only two genders listed, male and female. However there are many different gender identities internationally, which shows the problem that even if this is supposed to be a dataset for a global issue, the way that the data was collected was still eurocentric. These different gender identities could also come with their mental challenges and experiences that hinder their decision to seek help [@Tabaac2017]. As these different gender identities and their experiences are not included in the original survey, it hinders the accuracy of the main points that the Wellcome Trust intended to make. Gender non-conforming people are often ridiculed, looked down and not allowed to progress in their society due to the effects of colonialism [@Hussain2019], in such a way that they were not included in a survey specifically intended for mental health treatment. The dataset also did not include an 'other' option to account for the diversity in gender identities. Even if they did, that groups a lot of different gender identities together; genders that are completely different from each other. 
 
-There are problem on how to meausre depression and enxiety, as not all expressions of these illnesses are the same, and different cultures may epxress them in different ways. As the ways that respondnts understood these concepts were very broad, Creating a standardized way as stated in the methodolgy section(cite methodolgy) is too restictive and also eurocentric. 
+The dataset only collected data on anxiety and depression and how they affect a respondent's worldview. They did not include different common but also debilitating mental disorders such as Bipolar Disorder, ADHD and others. Not including these disorders when conducting the survey promotes the further exclusion of people with these illnesses from developing treatment, and also hinders their ability to seek treatment even as these disorders are also common. It also perpetuates the myth that depression and anxiety are the only two valid illnesses as they are the ones that appear in popular media the most with the most sympathy, while other mental disorders that affect the lives of millions worldwide are type cast as evil and dangerous. 
 
-The survey collected infornation of people only 15 years and older, but the mental health for children is also important. Children make up x% of the global population, and in modern age, especially in the west, children also get depression and anxiety. Child psychology deals with the importanc eof mental heath treatmebt for children and how traumatic experiences from cuildhood can affect adulthood, but such vital inforamtion is missing from the dataset. Children are also less liekly to seek help if their parents dont believe in help, and this could have brought u improtant co nversations on when children need to seperate health from parents (cite children not telling adults about things). As their eperiences werent part of the survey, the resukts are likely skewed. 
+There are problem on how to measure depression and anxiety, as not all expressions of these illnesses are the same, and different cultures may express them in different ways. As the ways that respondents understood these concepts were very broad, creating a standardized way as stated in the methodology section [@citegallup] is too restrictive and also has the possibility of following eurocentric standards of mental illness. Thus, the dataset may not be getting the full picture of the manners that people relate to mental disorders in their daily life and their perceptions of these illnesses.  
 
+The survey collected information on people only 15 years and older, but the mental health for children is also important. Children below the age of 15 make up 26% of the global population, and are also prone to disorders such as depression and anxiety. Child psychology deals with the importance of mental heath treatment for children and how traumatic experiences from childhood can affect adulthood, but such vital information is missing from the dataset. This helps perpetuates the difficulty of child psychology to be taken into account when dealing with multi-national health.  Children are also less likely to seek mental health care due to parental situations that were mentioned in the report, and this could have brought up important conversations on when children need to start making their own medical decisions and the advantages or disadvantages [@Fundudis2003] As their experiences were not part of the survey, the results are likely inaccurate as a true measure of global perceptions and reactions to mental health and mental health care. 
 
-  north macedonia's code isnt here so does line up well.
+Finally, the dataset does not explain why lower income and unemployed people are less likely to seek mental health care to their richer counterparts. This would then lead those analyzing the data to believe that it is correlated to their level of education; that they are not self-aware enough to know that they have a problem. This is often not the case as low income people are often fully aware of the problems they have and the need to treat it, but simply do not have the funds or the availability to utilize mental health resources.
+
 
 ## Data Collection Concerns 
 
-There were some countries in which no data was recorded. This could be due to either these people not being randomly chosen due to a small population, or no-one that was chosen in the country decided to participate in the survey. Many of these missing countries were from Africa, and this missing data from these countries introduced bias in the dataset as the peoples mental health and attitudes towards in many country's situation is missing. The results presented are thus likely very different from the true global state of mental health choice, and is biased towards europe and the west as most european countries were included.  
+There were some countries in which no data was recorded. This could be due to either these people not being randomly chosen due to a small population, or no-one that was chosen in the country decided to participate in the survey. Many of these missing countries were from Africa, and this missing data from these countries introduced bias in the dataset as these countries make a significant portion of the total global population. The results presented are thus likely very different from the true global perceptions of mental health and care,and is likely biased towards the western world and South America as most countries in those areas were included.  
 
-We saw when analyzing the data that some country mental health data was biased. This was due to all respondents being from just one city in the country, i.e all respondents from Congo lived in Brazzaville. The data for these countries are thus not randomly sampled, and doesn't contain the true overall perspective as views of city people are likely different from thus in smaller towns or rural areas. 
+Some countries' mental health data were collected in a non-representative way. This was due to all respondents being from just one city in the country, for example all respondents from Congo lived in Brazzaville. The data for these countries are thus not randomly sampled, and doesn't contain the true overall perspective as the views of city people are likely different from those in smaller towns or rural areas. 
 
 The survey could have other sampling biases. The people being randomly sampled for each country may have a more pro-mental care or anti-mental care stance, and the politics of the people could also influence their stance. Since the survey could be sampling a large proportion of people for either stance, the results for that country could be biased.
 
-The survey put "Don't Know" or "refused" in the same section. This causes problems as the peoplw who truly do not know could actually have an opinion or answer, but due to not understanding the question due to the strict interpratation of questions, were confused. Dont know is also not related to refused, as those who do nt know is an opinion in itself, and could be used for analysis, howver grouping them in with those who refused to answer at all makes it harder to interpret.
+The survey put "Don't Know" and "refused to answer" in the same option. This causes problems as the people who truly do not know could actually have an opinion or answer, but due to not understanding the question due to the strict interpretation of questions, were confused. "Don't know" is also not related to "Refused to answer", as not knowing is an opinion in itself and could be used for analysis, however grouping them in with those who refused to answer at all makes these results harder to interpret.
 
-There is also the possibiilty that people submitted fake answers. Although this is less likely over the phone (the way the survey was condiucted) than over the internet, it still poses a problem. Filtering out this data is thus difficult as there is no indicator of which information is real and which is fake. 
+There is also the possibility that people submitted fake answers. Although this is less likely over the phone (the way the survey was conducted) than over the internet, it still poses a problem. Filtering out this data is thus difficult as there is no indicator of which information is real and which is fake. 
 
-##  Age and Mental Health Access impact
+## Impact of Age and Mental Health Access
 
-(Figure \@ref(fig:figfive)) revealed that the older one is, the higher the probability that they seek mental health care, notwithstanding gender. Mental health problems are under-identified by health-care professionals and older people themselves, and the stigma surrounding these conditions makes older adults reluctant to seek help [https://www.who.int/news-room/fact-sheets/detail/mental-health-of-older-adults]. There are sveral mental healtth stressors related to age, such as a decline in capabilites and decline in functional ability. As these are less likely to happen to younger people, they re less likely to seek mental health because of it. Older people may also feel as they are getting older they are more of a burden to society and elss funcitonal, due to ageism. This may also induce age related problems such as depression over loss of function and anxiety over being replacec [cite]. For acdults, stress of worm may also contribute to these problens, which young adults do not relate to as they are in college or just starting their careers. This could also be associated with the mid life crisis common in men around 40, a call to hang onto youth. This can affect the decision to finalyl seek help over the anxiety of aging and position in life. In addition, older people are more likely to experience events such as bereavement, or a drop in socioeconomic status with retirement. All of these stressors can result in isolation, loneliness or psychological distress in older people, for which they may mental health care [https://www.who.int/news-room/fact-sheets/detail/mental-health-of-older-adults]. As the young still do not as many societal pressures on them as older adutls, or are not as knoweledgabele on the reality of life and mentality as the older, they are less likely to seek hep, either as they do not yet need it or are unaware that there is help. The olde rpeople also more likely to have income that they can use to get help, compared to the younger who often dont have the funds from decades of work. 
+(Figure \@ref(fig:figsix)) revealed that the older one is, the higher the probability that they seek mental health care, gender notwithstanding. There are several mental health stresses related to age, such as a decline in capabilities and functional ability. As these are less likely to happen to younger people, they are less likely to seek therapy because of it. Older people may also feel as they are getting older they are more of a burden to society and less functional, due to ageism. This may also induce age related problems such as depression over loss of function and anxiety over being replaced [@Dollinger2001]. For middle aged adults, the stress of work may also contribute to these mental health problems and the decision to seek help, which young adults do not relate to as they are in college or just starting their careers. This could also be associated with the mid life crisis common in men around 40, an attempt to hang onto youth. This can affect the decision to finally seek help over the anxiety of aging and their new positions in life. In addition, older people are more likely to experience events such as bereavement, or a drop in socioeconomic status with retirement. All of these stresses can result in isolation, loneliness or psychological distress in older people, for which they may seek mental health care [@whold]. As younger people still do not have as many societal pressures on them as older adults, or are not as knowledgeable on the existence of mental health and treatment compared to those with more life experience, they are less likely to seek help. Mental health problems are under-identified by health-care professionals and younger people themselves, and the stigma surrounding these conditions makes younger adults reluctant to seek help [@Corrigan2014]. Older adults are also more likely to have a larger income than young people, making them more likely to be able to afford treatment compared to young adults who don't have accumulation of funds from decades of being in the workforce. This means that young adults who suffer from these disorders are less likely to seek the help they need.
 
-## Gender and Mental Health Access imoact
+## Impact of Gender on Mental Health Access
 
-Gender is one of the critical determinants of both mental health and mental health care. Many studies cusch as [cite] have shown that women, segmented in different groups, ages, etc, are all much more likely to seek mental help than men are. This is not due to lack of need from men, as they are as likely to have mental healtjh disorders as women [cite], but mainly due to different patriarchal societal expectations of men and women, which restrics the emotional vulnerabiltiy that men are allowed to express in society. Men and women think and act as they do due to  cultural ideas of femininity and masculinity, not because of role identities or psychological qualities. People have preconcieved biases about what behavior is acceptable for men and women and establish these gender difference during social encounters.  Many studies in the United States showed that women reported higher degrees of distress than males, and they were more likely to perceive having an emotional disorder than men with similar levels of symptoms [https://www.news-medical.net/health/The-Gender-Gap-in-Mental-Health.aspx]. Emotional expression, health care, and asking for help are all framed as feminine traits. Men are expected to be  emotionally stable and be strong, self-reliant, and indepndent. On the contrary, women are expected to sho theifr emotions, be frail, and rely on others. Thus, men seperate themselves from women by hiding their own health needs and refusing to seek care to conform to the standard male roles. These happens worldide in some form, irrespective of the specific ideas of masculinity, or how socially progressiv the country is. Men may be hesitant to seek professional help because of this conflict in gender roles, and the fear of increased stigma and "demasculinaztion" if they decide to seek help. Men are thus more likely than women to deal with mental illness on their own when it comes to treatment, or prolong treatment to te point tnat avoiding the problem becomes impossible. If they do seek professional help, they prefer quick solutions, which is why they are more likely to seek medical treatment more than therapy [https://link.springer.com/article/10.1007/s00127-015-1038-x]. Therapy also leads you to being emotionally vulnerable to another person,w hcih is also discouraged in the strict standards for masculinity. 
-These standards start young, as boys are mor elikely to be discroyraged from crying or showing emotions when they are sad; the general "be a man" concept, as opposwd to women where similar actions are encouraged. Male socialziation discoryages these behaviors as being weak or womely,which leads these boys as they get odler to concela emotion and not be in touch with themsleves enough to know that they even have a problem. This also leads to the much higher suicide rates for men as they dont seek help to the xtent that women do.  These findings suggest the need for education to improve men's help-seeking attitudes and spaces for men to talk a out their rpoblems, as well as degstamatzie men showing emotionsm for their own sake.  and to enhance older adults’ willingness to seek specialty mental health services.
-
-Many studies from in dus tr ial ised countries report that women are con sist ent ly more likely to use out pa tient mental health services than are men. Men may seek
-care at a later stage after the onset of symp toms, or delay until symptoms become severe. 
-
-https://doi.org/10.1007/s00127-015-1038-x
-
-Vogel, D. L., Heimerdinger-Edwards, S. R., Hammer, J. H., & Hubbard, A. (2011). “Boys don't cry”: Examination of the links between endorsement of masculine norms, self-stigma, and help-seeking attitudes for men from diverse backgrounds. Journal of Counseling Psychology, 58(3), 368–382. https://doi.org/10.1037/a0023688
+Gender is one of the critical determinants of mental health expression and the decision to seek mental health care. Many studies such as [@Pattyn2015] have shown that women, irrespective of segmentation in other groups such as age, employment status, etc. are consistently more likely to seek mental help than men are. This is not due to a lack of need of mental help from men, but mainly due to different patriarchal societal expectations of men and women, which restricts the emotional vulnerability that men are allowed to express in society. Men and women think and act as they do due to  cultural ideas of femininity and masculinity, not because of role identities or psychological qualities [@Mackenzie2006]. People have preconceived biases about what behavior is acceptable for men and women and establish these gender difference during social encounters.  Many studies in the United States showed that women reported higher degrees of distress than males, and they were more likely to perceive having an emotional disorder than men with similar levels of symptoms [@soveny]. Emotional expression, health care, and asking for help are all framed as feminine traits. Men are expected to be  emotionally stable and be strong, self-reliant, and independent. On the contrary, women are expected to show their emotions, be frail, and rely on others. Thus, men separate themselves from women by hiding their own health needs and refusing to seek care to conform to the standard male roles. These happens worldwide in some form, irrespective of the specific ideas of masculinity, or how socially progressive the country is. Men may be hesitant to seek professional help because of this conflict in gender roles, and the fear of increased stigma and "demasculinaztion" if they decide to seek help. Men are thus more likely than women to deal with mental illness on their own when it comes to treatment, or delay getting treatment to the point that avoiding the problem becomes impossible. If they do seek professional help, they prefer quick solutions, which is why they are more likely to seek medical treatment more than therapy [@Pattyn2015]. Therapy also involves being emotionally vulnerable to another person, which is also discouraged in the strict standards for masculinity. These standards start young, as boys are more likely to be discouraged from crying or showing emotions when they are sad; the general "be a man" concept, as opposed to young girls where similar actions are encouraged [@Vogel2011]. Male socialization discourages these behaviors as being weak or womanly,which leads these boys as they get older to conceal their emotion to the point of not knowing if there is a problem within. This also leads to the much higher suicide rates for men as they do not seek help to the extent that women do.  
 
 
-## Income, Employment and Mental Health Access impact
+## Impact of Income and Employment on Mental Health Access 
 
-Both the reuslts of the report and general knowledge shows that lower income people do not have the ability to seek mental health care as much as higher income people do. The lower income spend their money instead on the necessities, and as the lower income are also more likely to e lower edicated, they either are not aware that the problems they have a re memtla illnesses, or do not see mental health care as a serious thing to spend their money on[ https://www.publications.aap.org/pediatrics/article-split/139/1/e20151175/51726/Improving-Mental-Health-Access-for-Low-Income]. Poverty itself has a very negative effect on mental health, with the stress and anxiety of not being able to afford bare necessities are partake in calming activities which cost money, as well as raising children on a low budget and the stigma of being poort that exists globally. 
-still, there is a vast unmet need for mental health services in this population. It is estimated that among people experiencing poverty in the US who are in need of mental health care, <15% receive services, and even fewer complete treatment [https://www.publications.aap.org/pediatrics/article-split/139/1/e20151175/51726/Improving-Mental-Health-Access-for-Low-Income]. People living in poverty also face non-financial barriers  that reduce their ability to access mental health services,  Families in rural areas, for example, often have to travel long distances to access mental health services. A lack of insurance and a loack of state funded health care can also prevent lower income people from accessing the needed mental health care. Mental health clininc hours are also often during the day and dont accomodate for low income peoplw working in low wage jobs, who often do not have the flexibility to consistently attend therapy. The effects of these barriers are increased by the stress and demand of living in povrty. Additionally, some mental health professionals need to confront their challenges to addressing the needs of lower income people, including a lack of training for practice in the context of poverty, facing their own personal biases and beliefs, stigma associated with working with families from low-income communities, and difficulties applying a traditional diagnostic framework with people struggling to get by [https://www.publications.aap.org/pediatrics/article-split/139/1/e20151175/51726/Improving-Mental-Health-Access-for-Low-Income].
-It is also a negative feedback loop that poor metnal health makes unemployment muvh more liekly andalso increases the length of unemployment [https://ajph.aphapublications.org/doi/abs/10.2105/AJPH.75.5.502], which then affects income, which  akes it thus harder to seek mental help. This is a pereprtual cycel that keeps people poor and low mental health and further pereptueates their stignatixation in society as bith being lower income and being mentally ill. even upper income people who re employed do not seek servies becaus ethey likely see it as an  nomral factor of their higly strressful jobs. places where the employed are overworked will often make them believe that this is a normal thing and there is not problwm with the system, and thise who are also underpaid have the same problems as lower income people. Self employed also has no positive benefit for men and a negagive benefit for women, and they are also less likelt to seek help as they do not recognixe thieur problem or have time for anything [@Parslow2004]
-Higher income people are also more likely to havestability, can afford it and can afford to seek better options if things go wrong. This is counterintuiriuve as those who are uneployed or underemployed often suffer from anxiety/depression, which they cannot affrod
+Professional mental health care is expensive and unattainable for many as the cost of a single session can cost over a hundred US dollars, and in many cases several therapy sessions are needed over a long period of time. This makes mental health care inaccessible for many people worldwide who have neither the time nor the money to undergo the full extent of treatment. This increases the barriers that low income people who often work demanding jobs have to go throught o get the help that they need. 
 
-Drake, R., & Wallach, M. (2020). Employment is a critical mental health intervention. Epidemiology and Psychiatric Sciences, 29, E178. doi:10.1017/S2045796020000906
-talk about this!
+The report, specifically (Table \@ref(fig:tabtwo)) and other literature shows that lower income people do not have the ability to seek mental health care as much as higher income people do. Low income people spend their money instead on the necessities, and as lower income people are also more likely to be lower educated, they either are not aware that the problems they have are due to a mental disorder, or do not see mental health care as an important cost to bear [@Hodgkinson2017]. Poverty itself has a negative effect on mental health, with the stress and anxiety of not being able to afford bare necessities or partake in recreational activities which cost money, as well as raising children on a low budget and the stigma of being poor that exists globally. Still, there is a vast unmet need for mental health services in this population. It is estimated that among people experiencing poverty in the US who are in need of mental health care, less than 15 percent receive mental health care, and even fewer complete treatment [@Hodgkinson2017]. People living in poverty also face non-financial barriers that reduce their ability to access mental health services. Families in rural areas, for example, often have to travel long distances to access mental health services. A lack of insurance and state funded health care can also prevent lower income people from accessing the help that they need. Mental health clinic hours are also often during the day and do not accommodate for low income people working in low wage jobs, who often do not have the flexibility to consistently attend therapy [@Hodgkinson2017]. The effects of these barriers are increased by the stress and demand of living in poverty. [@Hodgkinson2017] adds that some mental health professionals need to confront their failures on addressing the needs of lower income people, including a lack of training for practice in the context of poverty, facing their own personal biases and beliefs, stigma associated with working with families from low-income communities, and difficulties applying the standard diagnostic framework with people struggling to get by. This also influences why some low income people do not trust the health care system, and by association, the mental health care system. This also causes a negative feedback loop in which poor metal health makes unemployment much more likely and also increases the length of unemployment [@unemployed], which then affects their ability to earn an income, which makes it harder to seek mental health care [@Drake2020]. This is a  cycle that keeps poor people from accessing help to treat their problems and further perpetuates their stigmatization in society as being both low income and mentally ill. 
+
+Even higher income people who are employed do not seek mental health services because they likely see the stress and anxiety they face in work as normal factor of their highly stressful jobs. Places where the employed are overworked will often make them believe that this is an inherent characteristic of the work environment. Those who are employed but underpaid, or are part time employed but want full employment also have issues similar to the unemployed and low income people.  Self employment also has no positive mental benefit for men and a negagive benefit for women, and they are also less likely to seek help as seeking treatment for mental disorders is not a priority as they do not have free time [@Parslow2004]. However, high income people are more likely to have stability, can afford therapy and can afford to seek better options if things go wrong. This is counterintuitive as those who are unemployed or underemployed often suffer from anxiety/depression, which they cannot afford to treat [@Drake2020]. 
 
 
 ## Education and mental health access impact
@@ -468,6 +446,8 @@ even in presence of other factors, edication is still important, why? Even the l
 
 Some people believe people with mental health problems are dangerous, when in fact they are at a higher risk of being attacked or harming themselves than hurting other people.
 
+people still see spiritual problems
+
 Campaigns to increase mental health literacy are needed at all levels of the health system.
 
 doi: 10.1192/bjp.177.5.396
@@ -475,66 +455,318 @@ doi: 10.1192/bjp.177.5.396
 https://doi.org/10.1176/ps.2007.58.5.642
 
 quackism and distrust in science
-## Nation Differences
-The average probability of seeking mental health care widly varied by country and continent. From (Figure \@ref(fig:figseven)), we see that overall europe had a higher probability of seeking mental health care, africa had a lower probability, and the probability for asia was somewhere in the middle. The countries that had a lower probability of seeking mental health care are often lower income countries, which translates to less funding for mantal healtjh facilties as well as more reural areas where these facilites, and mental health in general, are unknown. In these countries there are also less amount of trained professionals in mental health psycholigy, and those whu are traiend useually go the west for higher income, contributing to brain drain and a worsening mental health care network [https://www.sciencedirect.com/science/article/pii/S014067360761263X]. In these counties there is also a distrust for the usually western based mental health care, calling it a foreign object and preferring to seek more traditional avenues for mental health rpbolems, usually religion. There are also less proegresive beliefs on mental health in these nations. In these countries, speically for the porest income countries, mental health is less of a necessity as getting what is needed for bare survival and what is physically seen as a hinderacne for physical work. People in these countries with visible problems are also often labelled as juts being possessed or crazy,without inspection by these people on underlying problems [cite]. So locally avial ale, affordable mental health treatmen options are nto available for these countries[https://academic.oup.com/bmb/article/81-82/1/81/283383?login=true]. This is esoecially tru for countries in africa and the middle east which are currenbtly undergoing war. This leads to a major drain of professionals and desturction of facilities. 
 
-In contrast, wealthier and more developed nations hae a well endowed, dveeloped network of mental health professionals, and the care is either free or heavily subsidixed. The facilities are easily available and the public is more educate don what mental illnesses are, how they can be hekped, and the improtanc eof them being treated. Howver this is not true for all first world nations, as easta asian countrues still have a bias agaisnt mental halth despite being industrialaized, which lead ti fruther stigmatization in society. mentally ill people are also seen as weak or due to  their own fault. This indicates that culture and edication and not juts wealth of a nation affect the choice to seek mental health care. 
 
-Colonialsism also affects these acitons as a lot of stigma on mental ehalth exist in some countries that did not exist before the age of imperialism. Such include the mental helth that lgbt people face thta cause thewm distress, in countris which were not historically known to be homophobic. More rigid gender binaries were also introduced by colonizers that did not exist in some mor egalitarian precolonial societies, thus enfocring that men seek less help than women. The intrduction of religion, prinarily christianity and sometimes islam, also affects the decision by people in colonized nations to seek help, although this would probably be a problem even if they were not intriduced ti this, as evident by hindus in south east asia refusing professional mentla care in favor of religious alternatives [cite] 
+## National Differences
+
+The average probability of seeking mental health care varies by country and continent, as shown by (Figure \@ref(fig:figseven)).  We see that overall Europe had a higher average probability of seeking mental health care, Africa had a lower probability average, and the average probability for Asia was in the middle. The countries that had a lower probability of seeking mental health care are often lower income countries, which translates to less funding for mental health facilities, as well as more isolated rural areas where these facilities and knowledge on mental health in general, are scarce. In these countries there are also less amount of trained professionals in mental health psychology, and those who are trained often often migrate to higher income countries, contributing to brain drain and a worsening mental health care network [@Saraceno2007]. Mental health is also not seen as a priority in many low income countries, with many countries having mental heath services being less than 1 percent of the total health budget [@Patel2007]. In these counties there is also a distrust for the usually western based mental health care, seeing it as foreign and preferring to seek more traditional avenues for mental health problems, usually religion based [@Weatherhead2010]. Less progressive beliefs and attitudes towards mental health also are more prevalent in these nations.  In these countries, especially the poorest income countries, mental health treatment is less of a necessity compared to acquiring treatment for physical ailments which can hinder physical work, and what is needed for survival.  People in these countries with visible problems are also often labeled as just being possessed or crazy, without inspection of the underlying problems. Thus locally available, affordable mental health treatment options are not an option  for these countries[@Patel2007]. This is especially true for countries in Africa and the middle east which are currently undergoing war. This leads to a major drain of professionals and destruction of facilities. 
+
+In contrast, wealthier and more developed nations have a well endowed, developed network of mental health professionals, and the care is either free or heavily subsidized. The facilities are easily available and the public is more educated on mental disorders, how they can be treated, and the importance of treatment. However, this is not true for all first world nations, as industrialized East Asian countries still have a bias against victims of mental disorders [@Roh2016], which lead to their stigmatization in society. Mentally ill people are often seen as weak or the cause of their own problems. This indicates that culture and education, not just wealth of a nation, affects the choice to seek mental health care. 
+
+Colonialism also affects these actions as some mental health stigmas or situations that can cause mental health disorders seen in some countries  did not exist before the age of imperialism. This includes the stress and anxiety that comes LGBT people have due to oppression from countries not known to be historically homophobic[@Dagsvold2015]. More rigid gender binaries were introduced by colonialism, which did not exist in some more gender-egalitarian precolonial societies, thus enforcing the gender gap in mental health care seen today. The introduction of religion, primarily Christianity and Islam, also affects the decision by people in colonized nations to seek help in preference of religion.  
 
 
 
 ## Views of Mental Health and Mental Health Care in Society 
 
-Overall, the report has shown that there is still a long way to go for mental health to be seen as important as, and taken as seriously as, physical health care. There are sevral social, cultural, financial, systemic, and personal reasons that many choose not to seek care, and all these need to be adressed and changed before seeeing any real change in mental health awareness and care. Mental illnesses need to be de stigmatized and taken seriousy and at face value (not as caused by spirits or othr supernatural causes). More ecuation on mental health and its benefits, especially in lower income countries is needed as there are still a lot of miscomcetptions on noth what constitirs mental illnesses, and how to treat them. Views on mental health are also affected by religion, in which some relegate these mental problems due to spirits or other supernatural entitities [cite], while other beliefs see them as a punishment, while in others, people with mental problems are seen as religious leaders [cite crazy shamans]. The decision to seek mental helth care is also a factor fo religion, as some religions see them as fake science and to seek  religious authority instead. There has also been a negative association with mental health care in the past, particularly in the west with mental health isntitutions not treting the patients, but merelty locking them away from society answ ith cinstant abuse and other forms of bad medical rpactices uch as lobotmoy and hypnosis, which may srtill negatively affect the view of people to treatment roday. Mental health care has also had a negative histry with racial and ethnic minorities worldwide, in whih legitimate rpoblems witha person were discounted due to their minority status, leading these mintorites to distruss mentsl health care[https://doi.org/10.3402/ijch.v74.26952].mental repsonsibilty, that any mental health problems are their fault and within their contol, as opposed to some being otuside the person's control and controleld by chemical imbalances. The more negative symptoms of some mental disorders such as otuburts or poor hygiene also paoint a negative light of the suffereres and puts them as nad epople rather than as sufferers of debiltiating illnesses. This makes it hard to not only talk about it with others, but also to seek help as they have a sense of guilt over their own health. Those who seek help with friends as shown by the report are also lilely to seek help from professionals, as they have the supprot system and confidnece to be vulnerable with others on a sensitive topic, which is still a taboo in many parts of the world. As people with mental health problems are less likely to find work, be in steady relationships, luve in decent housing, and be socially included in mainstream society. This is due to institutional biases such as  less faith that people have in mentally ill compared to mentall well such as landlords dont believ that they can hokd a house, friends and lovers get frustrated with them, jobe employers dont want them as theyre unpredictable and other stigmas in the workplace, etc. This shows the ways that people with open mental ehalth issues are discriminated in socyet, and explais why those witn less obvious symptoms choose not to seek help. Mental health is demonized through stereotypes that perpeetiate preconceived negative notions about mental ill health, such as violemce and laziness. Media reports often link mental illnesses with violence or portray victims as dangerous or criminal, or unable to love normal lives. 
+Overall, the report has shown that there is still a long way to go for mental health to be seen as important as, and taken as seriously as, physical health care. There are sevral social, cultural, financial, systemic, and personal reasons that many choose not to seek care, and all these need to be adressed and changed before seeeing any real change in mental health awareness and care. Mental illnesses need to be de stigmatized and taken seriousy and at face value (not as caused by spirits or othr supernatural causes). More ecuation on mental health and its benefits, especially in lower income countries is needed as there are still a lot of miscomcetptions on noth what constitirs mental illnesses, and how to treat them. Views on mental health are also affected by religion, in which some relegate these mental problems due to spirits or other supernatural entitities [cite], while other beliefs see them as a punishment, while in others, people with mental problems are seen as religious leaders [cite crazy shamans]. The decision to seek mental helth care is also a factor fo religion, as some religions see them as fake science and to seek  religious authority instead. There has also been a negative association with mental health care in the past, particularly in the west with mental health isntitutions not treting the patients, but merelty locking them away from society answ ith cinstant abuse and other forms of bad medical rpactices uch as lobotmoy and hypnosis, which may srtill negatively affect the view of people to treatment roday. Mental health care has also had a negative histry with racial and ethnic minorities worldwide, in whih legitimate rpoblems witha person were discounted due to their minority status, leading these mintorites to distruss mentsl health care[https://doi.org/10.3402/ijch.v74.26952]. Minorities are also less likely to have good acess to care [https://pubmed.ncbi.nlm.nih.gov/20669516/] mental repsonsibilty, that any mental health problems are their fault and within their contol, as opposed to some being otuside the person's control and controleld by chemical imbalances. The more negative symptoms of some mental disorders such as otuburts or poor hygiene also paoint a negative light of the suffereres and puts them as nad epople rather than as sufferers of debiltiating illnesses. This makes it hard to not only talk about it with others, but also to seek help as they have a sense of guilt over their own health. Those who seek help with friends as shown by the report are also lilely to seek help from professionals, as they have the supprot system and confidnece to be vulnerable with others on a sensitive topic, which is still a taboo in many parts of the world. As people with mental health problems are less likely to find work, be in steady relationships, luve in decent housing, and be socially included in mainstream society. This is due to institutional biases such as  less faith that people have in mentally ill compared to mentall well such as landlords dont believ that they can hokd a house, friends and lovers get frustrated with them, jobe employers dont want them as theyre unpredictable and other stigmas in the workplace, etc. This shows the ways that people with open mental ehalth issues are discriminated in socyet, and explais why those witn less obvious symptoms choose not to seek help. Mental health is demonized through stereotypes that perpeetiate preconceived negative notions about mental ill health, such as violemce and laziness. Media reports often link mental illnesses with violence or portray victims as dangerous or criminal, or unable to love normal lives. 
 
 there has also been a rise in misinformation of what mental health is. rise of fake disorders, fake treatment, fake sumptoms... 
 Thus, globally there is still a lot of publis stigma, self stigma, and instrituitional stigma towards both mental health and mental health care, which hinders the progress in acceptance. 
 
 
+Anxiety disorders affect 3.8% of the older population, substance use problems affect almost 1% and around a quarter of deaths from self-harm are among people aged 60 or above. Substance abuse problems among older people are often overlooked or misdiagnosed.
+
 https://journals.sagepub.com/doi/abs/10.1177/1529100614531398
 
 https://ps.psychiatryonline.org/doi/full/10.1176/ps.2007.58.5.642
 
+http://www.indigenouspsych.org/Interest%20Group/Kirmayer/2009_Healing%20Traditions_C20_KirmayerBrassValaskakis.pdf
+
 # Weaknesses and Next Steps 
 
-During data cleaning, we removed all observations that had a missing value in the variable for choice for mental health. This removed a lot of observations from the model, even removing all the observations of one country. If these observations were not dropped randomly from the dataset, there is bias and we are not getting the true results on choice. All obsevations which included "Not Sure" were changed to a "No" in our dataset. As the true beliefs of a person who put "not sure" could have actually been a yes if they understood the queston, or a "not sure" was their genuine answer, putting a no includes a false bias in the data, and could aslo make the dataset biase to "No". The predictive effect of our model was quite weak, only getting x% of total observations correct. This may indicate that our model did not have the best variables possible to explain the choice to seek mental health care. Also as our model has a binary output, we are not able to account for not just the decision to seek, but how many times they were sought. It is very possible that we are genralizing that everyone who souhgt help at least once sought it mutiple times, which is often not the case. 
-A lot of our variables in model assumptions were dependent. 
+During data cleaning, we removed all observations that had a missing value in the response variable; the choice to seek mental health care. This removed a lot of observations from the model, even removing all the observations of one country. If these observations were not dropped randomly from the dataset, there is bias and we are not getting the true results. All observations which included "Not Sure" were changed to a "No" in our dataset. As the true beliefs of a person who put "not sure" could have actually been a yes if they understood the question, or a "not sure" was their genuine answer, putting a no introduces bias in the model. The predictive effect of our model was quite weak, only getting 65.4% of total observations correct. This may indicate that our model did not have the best variables possible to explain the choice to seek mental health care. Also as our model has a binary output, we are not able to account for not just the decision to seek care, but how many sessions of therapy were attained. We are generalizing that everyone who sought help at least once sought it multiple times, which is often not the case. Finally, a lot of our variables in model assumptions were very dependent on each other, meaning that this multicollinearity could have caused less precise estimates of our coefficients. 
 
-In further reports: The dataset does not state whether a posion chooses not to seek help because they do not want, or because they are not able to seek help, or both. Dividing thse decisions into two variables could help with further analysis on barriers to getting mental health treatment. In further reports we could include other mental illnesses and their effect on societal attitudes and decisions to seek help, as well as respidnent experiences. This will create a bigger idea of the full picture. we could also focus specifically on mental health in the covid era, and how covid ans subsequent lockdowns changed attitudes towards mental health.We could include a random effect of country in our mdoel to account for the possibility that not all observations in the same country are truly independent fromeach other, as they may have similar shared experiences. 
+For further reports, the dataset does not state whether a person chooses not to seek help because they do not want help, or because they are not able to seek help, or both. Dividing these decisions into two variables could help with further analysis on the barriers to getting mental health treatment. We could also include other mental disorders and their effect on societal attitudes and decisions to seek help, as well as respondent experiences with these disorders. This will create a fuller idea of how mental disorders are viewed worldwide. we could also focus specifically on mental health in the COVID19 era, and how COVID19 and subsequent lockdowns changed attitudes towards mental health. We could use a linear mixed model to include a random effect of country in our model to account for the possibility that not all observations in the same country are truly independent from each other, as they may have similar shared experiences. We could also use other variables in our model related to attitudes on mental health to try and improve the predictive properties of the model.
 
 # References
-https://wellcome.org/reports/wellcome-global-monitor-mental-health/2020/executive-summary
-
-https://cms.wellcome.org/sites/default/files/2021-11/WGM_Full_Questionnaire.pdf
-
-https://cms.wellcome.org/sites/default/files/2021-10/wgmdata-mental-health-data-dictionary-user-guide.docx
-
 
 
 # Appendix 
 
-We do not use resiudal or pairwise plots as they are not very helpful for a binary response with many binary and categorical explanatory variables.
+## Datasheet for Dataset
 
-To see which variable is best for the model, check for multicollinearity
-```{r}
-library(MASS)
+### Motivation
 
-stepAIC(glm(Help ~factor(friends) + factor(science) + Age + factor(EMP_2010) + factor(Gender)+ factor(Education) + factor(Subjective_Income) + factor(wbi) + factor(comfort), family = "binomial",data=datamod), scope=list(lower=lm(Help ~ 1, data=datamod)),direction = "both", k=2)
-```
-Chi square to test correlation 
-null is statistical independent, we see that theyre heavily correlated which makes snese, but not everyone in a wealthy  country is wealthy and we want to see how personal wealth affects, include it anyway. 
-```{r}
-chisq <- chisq.test(datamod$wbi, datamod$Subjective_Income)
-chisq
-```
+1. **For what purpose was the dataset created?** 
 
-As I see an s shape for the predictions, it is binomial. 
-```{r}
-qqnorm(modelres01, pch=1,frame=FALSE)
+This dataset was created to evaluate the importance of mental health to people worldwide, as well as the probability that a person seeks mental health care, dependent on their belonging to various groups.   
 
 
-qqnorm(fitted, pch=1,frame=FALSE)
-qqline(fitted,lwd=2)
-```
+2. **Who created this dataset (e.g. which team, research group) and on behalf of which entity (e.g. company, institution, organization)**?
 
+
+This dataset was created by the Wellcome Global Monitor on behalf of the Wellcome Trust, and edited by Olaedo Okpareke of the University of Toronto. 
+
+3. **What support was needed to make this dataset?** 
+
+The project was funded by the Wellcome Trust. 
+
+
+4. **Any other comments?**
+
+No.
+
+### Composition
+
+
+
+1. **What do the instances that comprise the dataset represent (e.g. documents, photos, people, countries)?** 
+
+Each row of the main dataset is a person, and the information about that specific person. 
+
+2. **How many instances are there in total (of each type, if appropriate)?**
+
+There are about 119,000 instances in the original datset. The dataset used for the report contains about 23700 instances. 
+
+3. **Does the dataset contain all possible instances or is it a sample (not necessarily random) of instances from a larger set?**
+
+The dataset is a sample of the total global population. The sample is intended to be representative of the global population. This was validated by stratification of the dataset by the authors.  
+
+
+4. **What data does each instance consist of?** 
+
+Each instance consists of demographic, societal information or information on beliefs and choices regarding mental health and mental health care. For example Age, income class, country, belief in mental health science.
+
+5. **Is there a label or target associated with each instance?** 
+
+Yes, there is a unique case ID for every individual. 
+
+6. **Is any information missing from individual instances?** 
+
+There is a lot of missing information, particularly on the choice to seek mental health. This is most likely because these questions were not asked to most respondents. 
+
+7. **Are relationships between individual instances made explicit (e.g. users' movie ratings, social network links)?** 
+
+Yes, through the unique ID.
+
+8. **Are there recommended data splits (e.g. training, development/validation, testing)?** 
+
+No.
+ 
+9. **Are there any errors, sources of noise, or redundancies in the dataset?** 
+
+There may be, if respondents answered untruthfully. It is difficult to tell. 
+
+
+10. **Is the dataset self-contained, or does it link to or otherwise rely on external resources (e.g. websites, tweets, other datasets)?** 
+
+It is self-contained. 
+
+11. **Does the dataset contain data that might be considered confidential (e.g. data that is protected by legal privilege or by doctor-patient confidentiality, data that includes the content of individuals' non-public communications)?** 
+
+
+Yes, the decision to seek mental health care, age, and the subjective income are examples of private information in the dataset. 
+
+
+
+12. **Does the dataset contain data that, if viewed directly, might be offensive, insulting, threatening, or might otherwise cause anxiety?** 
+
+No, the survey designers made sure to remove any potentially insensitive questions. 
+
+13. **Does the dataset relate to people?**
+
+Yes.
+
+14. **Does the dataset identify any subpopulations (e.g. by age, gender)?** 
+
+Yes, age, gender, and country are examples.
+
+15. **Is it possible to identify individuals (i.e., one or more natural persons), either directly or indirectly (i.e., in combination with other data) from the dataset?**
+
+No. 
+
+16. **Does the dataset contain data that might be considered sensitive in any way (e.g. data that reveals racial or ethnic origins, sexual orientations, religious beliefs, political opinions or union memberships, or locations; financial or health data; biometric or genetic data; forms of government identification, such as social security numbers; criminal history)?** 
+
+yes, it contains political information on if the government should fund mental health research.
+
+17. **Any other comments?**
+
+No.
+
+
+### Collection
+
+
+1. **How was the data associated with each instance acquired?** 
+
+Through a telephone-based global survey in which the respondents were directly asked questions.
+
+2. **What mechanisms or procedures were used to collect the data (e.g. hardware apparatus or sensor, manual human curation, software program, software API)?**
+
+Manual Human curation, as each question was answered by speech and then manually recorded as a numeric observation.
+
+3. **If the dataset is a sample from a larger set, what was the sampling strategy (e.g. deterministic, probabilistic with specific sampling probabilities)?**
+
+Probability based random Sampling. 
+
+4. **Who was involved in the data collection process (e.g. students, crowdworkers, contractors) and how were they compensated (e.g. how much were crowdworkers paid)?**
+
+Researchers, Surveyors and Volunteers with the Trust. Pay structure is unknown. 
+
+5. **Over what timeframe was the data collected?** 
+
+February 2020 to August 2021.
+
+7. **Were any ethical review processes conducted (e.g. by an institutional review board)?** 
+Yes, questions were screened for sensitivity by Gallup’s Institutional Review
+Board (IRB). The process was Research and Literature Review -> Expert Interviews -> questionnaire first draft -> cognitive testing -> questionaire refinement -> pilot testing -> Final questionnaire.   
+
+8. **Does the dataset relate to people?** 
+
+Yes.
+
+9. **Did you collect the data from the individuals in question directly, or obtain it via third parties or other sources (e.g. websites)?**
+
+Data was gotten directly from individuals.
+
+10. **Were the individuals in question notified about the data collection?** 
+
+Yes, they were told that their answers would be recorded. 
+Link: https://cms.wellcome.org/sites/default/files/2021-10/wgm2020-methodology.pdf
+
+11. **Did the individuals in question consent to the collection and use of their data?** 
+
+Yes, those who did not consent were put as "Refused" as an observation.
+Link: https://cms.wellcome.org/sites/default/files/2021-10/wgm2020-methodology.pdf
+
+12. **If consent was obtained, were the consenting individuals provided with a mechanism to revoke their consent in the future or for certain uses?** 
+
+No. 
+
+13. **Has an analysis of the potential impact of the dataset and its use on data subjects (e.g. a data protection impact analysis) been conducted?**
+
+No. 
+
+14. **Any other comments?**
+
+No.
+
+
+### Preprocessing / Cleaning / Labeling
+
+1. **Was any preprocessing/cleaning/labeling of the data done (e.g. discretization or bucketing, tokenization, part-of-speech tagging, SIFT feature extraction, removal of instances, processing of missing values)?** 
+
+Yes, the data was cleaned. 
+
+2. **Was the "raw" data saved in addition to the preprocessed/cleaned/labeled data (e.g. to support unanticipated future uses)?** 
+
+No.
+
+3. **Is the software used to preprocess/clean/label the instances available?** 
+
+No. 
+
+4. **Any other comments?**
+
+No. 
+
+
+### Uses
+
+
+1. **Has the dataset been used for any tasks already?** 
+
+yes, to provide more information on best ways to form mental health treatments.
+
+2. **Is there a repository that links to any or all papers or systems that use the dataset?** 
+
+No.
+
+3. **What (other) tasks could the dataset be used for?**
+
+It could also be used for predicting other variables such as the probability someone has felt anxious or depressed in the last 12 months. 
+
+4. **Is there anything about the composition of the dataset or the way it was collected and preprocessed/cleaned/labeled that might impact future uses?**
+
+Yes, the data was collected during the COVID lockdown era, which might have had a heavy impact on perceptions and access of mental health that would not normally be the case.  
+
+5. **Are there tasks for which the dataset should not be used?** 
+
+No, none were stated.
+
+6. **Any other comments?**
+
+No.
+
+
+### Distribution
+
+1. **Will the dataset be distributed to third parties outside of the entity (e.g. company, institution, organization) on behalf of which the dataset was created?** 
+
+No, the dataset is only available on the website. 
+
+2. **How will the dataset be distributed (e.g. tarball on website, API, GitHub)?** 
+
+On the Wellcome Global Monitor Website. There is no DOI available. 
+
+3. **When will the dataset be distributed?**
+
+The dataset is already available. 
+
+4. **Will the dataset be distributed under a copyright or other intellectual property (IP) license, and/or under applicable terms of use (ToU)?** 
+
+Intellectual property of the Wellcome Trust. 
+Link: https://wellcome.org/who-we-are/privacy-and-terms
+
+5. **Have any third parties imposed IP-based or other restrictions on the data associated with the instances?** 
+
+No. 
+
+6. **Do any export controls or other regulatory restrictions apply to the dataset or to individual instances?** 
+
+No. 
+
+7. **Any other comments?**
+
+No. 
+
+
+### Maintenance
+
+
+1. **Who is supporting/hosting/maintaining the dataset?**
+
+Wellcome Trust supports, hosts, and maintains the dataset.
+
+2. **How can the owner/curator/manager of the dataset be contacted (e.g. email address)?**
+
+Email address: Not stated on Website
+
+Telephone: +44(0)2076118888
+
+
+3. **Is there an erratum?** 
+
+No. 
+
+4. **Will the dataset be updated (e.g. to correct labeling errors, add new instances, delete instances)?** 
+
+No, the dataset is final. 
+
+5. **If the dataset relates to people, are there applicable limits on the retention of the data associated with the instances (e.g. were individuals in question told that their data would be retained for a fixed period of time and then deleted)?**
+
+No, there is no limit. 
+
+
+6. **Will older versions of the dataset continue to be supported/hosted/maintained?** 
+
+Older versions (years) of the dataset are being hosted on their own webpages. 
+
+7. **If others want to extend/augment/build on/contribute to the dataset, is there a mechanism for them to do so?** 
+
+No. Only those employed by Wellcome Trust and Gallup Polls are approved to add on to the dataset. 
+
+8. **Any other comments?**
+
+No. 

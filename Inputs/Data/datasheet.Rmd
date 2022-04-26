@@ -1,13 +1,13 @@
 ---
 title: "Datasheet For Mental Health Dataset"
 author: "Olaedo Okpareke"
-Organization: "The University of Toronto"
-output: html_document
+Organization: The University of Toronto
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 # Motivation
-
-*The questions in this section are primarily intended to encourage dataset creators to clearly articulate their reasons for creating the dataset and to promote transparency about funding interests.*
 
 1. **For what purpose was the dataset created?** 
 
@@ -16,7 +16,6 @@ This dataset was created to evaluate the importance of mental health to people w
 
 2. **Who created this dataset (e.g. which team, research group) and on behalf of which entity (e.g. company, institution, organization)**?
 
-	*Your Answer Here*
 
 This dataset was created by the Wellcome Global Monitor on behalf of the Wellcome Trust, and edited by Olaedo Okpareke of the University of Toronto. 
 
