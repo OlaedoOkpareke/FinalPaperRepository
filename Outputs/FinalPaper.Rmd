@@ -116,7 +116,7 @@ plot6 = ggplot(data = datamod, aes(x = factor(friends), fill = help)) +
   scale_fill_grey() +
   theme_minimal() +
   coord_flip()+
-  labs(fill = "Choice", x = "Sought Help from Friends", y = "Proportion")
+  labs(fill = "Choice", x = "Help from Friends", y = "Proportion")
 
 grid.arrange(plot1,plot4,plot6, nrow=3)
 ```
@@ -210,7 +210,7 @@ For the report, we focus on these 8 groups and demographics of respondents;
 
 ## Assumptions Checking and Methods
 
-We do not use residual or pairwise plots as they are not very helpful for a model with a binary response and many binary and categorical explanatory variables. The p value is the probability that we will see our test statistic given the the null hypothesis is true. 
+We do not use residual or pairwise plots as they are not very helpful for a model with a binary response and many binary and categorical explanatory variables. The p value is the probability that we see our test statistic given the the null hypothesis is true. 
 
 We check the assumption that the response of whether a person chooses to seek therapy or not is binary, which it is evident on the dataset, thus we use a binomial model. We also check that all observations are independent, which they are as the respondents were chosen via random sampling. We also assume that the log of the odds ratio is a linear function of the explanatory variables. 
 
