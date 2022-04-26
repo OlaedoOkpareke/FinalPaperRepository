@@ -13,15 +13,18 @@ data = data %>%
   filter(!is.na(MH8C))
 
 data = data %>%
-  mutate(help = ifelse(MH8A == 1,1,0),friends = ifelse(MH8C == 2 | MH8C ==99,0,1),
+  mutate(Help = ifelse(MH8A == 1,1,0),friends = ifelse(MH8C == 2 | MH8C ==99,0,1),
          comfort = ifelse(MH5 == 3 | MH5 ==99,0,1),science = ifelse(MH2B == 1 | MH2B ==2,1,0))
 
 datamod = data %>%
-  select(COUNTRYNEW,help,friends,comfort, science, EMP_2010,Age,Gender,Education,Subjective_Income,wbi) %>%
+  select(COUNTRYNEW,Help,friends,comfort, science, EMP_2010,Age,Gender,Education,Subjective_Income,wbi) %>%
   filter(!is.na(EMP_2010)) # to make datasets the same size for comparison
 
 datamod = datamod %>%
-  mutate(Help = ifelse(help ==1, "Sought Therapy","Did not seek therapy"))
+  mutate(help = ifelse(Help ==1, "Sought Therapy","Did not seek therapy")) %>%
+  mutate(friends = ifelse(friends==1, "Sought Friends","Did Not seek Friends"),
+         science = ifelse(science==1, "Belief","No Belief"),
+         Gender = ifelse(Gender==1,"Male","Female"))
 
 # Changed to match up with country names for map data
 datamod = datamod %>%
@@ -32,8 +35,5 @@ datamod = datamod%>%
 
 write_csv(datamod, "Inputs/Data/datamod.csv")
 
-strat = read_csv(here::here("Inputs/Data/ipumsi_00001.csv.gz"))
-stratfull = strat %>%
-  filter(!is.na(INCTOT))
 
 

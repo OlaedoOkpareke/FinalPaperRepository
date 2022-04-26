@@ -39,16 +39,16 @@ Each row of the main dataset is a person, and the information about that specifi
 
 2. **How many instances are there in total (of each type, if appropriate)?**
 
-There are about 119,000 instances. 
+There are about 119,000 instances in the original datset. The dataset used for the report contains about 23700 instances. 
 
 3. **Does the dataset contain all possible instances or is it a sample (not necessarily random) of instances from a larger set?**
 
 The dataset is a sample of the total global population. The sample is intended to be representative of the global population. This was validated by stratification of the dataset by the authors.  
 
 
-4. **What data does each instance consist of?** "Raw" data (e.g. unprocessed text or images) or features? In either case, please provide a description.
+4. **What data does each instance consist of?** 
 
-Each instance consists of demographic, societal information or information on beliefs or choices. For example Age, income class, country, belief in mental health science.
+Each instance consists of demographic, societal information or information on beliefs and choices regarding mental health and mental health care. For example Age, income class, country, belief in mental health science.
 
 5. **Is there a label or target associated with each instance?** 
 
@@ -84,7 +84,7 @@ Yes, the decision to seek mental health care, age, and the subjective income are
 
 12. **Does the dataset contain data that, if viewed directly, might be offensive, insulting, threatening, or might otherwise cause anxiety?** 
 
-No.
+No, the survey designers made sure to remove any potentially insensitive questions. 
 
 13. **Does the dataset relate to people?**
 
@@ -110,13 +110,13 @@ No.
 ## Collection
 
 
-1. **How was the data associated with each instance acquired?** Was the data directly observable (e.g. raw text, movie ratings), reported by subjects (e.g. survey responses), or indirectly inferred/derived from other data (e.g. part-of-speech tags, model-based guesses for age or language)? If data was reported by subjects or indirectly inferred/derived from other data, was the data validated/verified? If so, please describe how.
+1. **How was the data associated with each instance acquired?** 
 
-Through a telephone-based global survey.
+Through a telephone-based global survey in which the respondents were directly asked questions.
 
 2. **What mechanisms or procedures were used to collect the data (e.g. hardware apparatus or sensor, manual human curation, software program, software API)?**
 
-Manual Curation.
+Manual Human curation, as each question was answered by speech and then manually recorded as a numeric observation.
 
 3. **If the dataset is a sample from a larger set, what was the sampling strategy (e.g. deterministic, probabilistic with specific sampling probabilities)?**
 
@@ -124,7 +124,7 @@ Probability based random Sampling.
 
 4. **Who was involved in the data collection process (e.g. students, crowdworkers, contractors) and how were they compensated (e.g. how much were crowdworkers paid)?**
 
-Researchers and Surveyors. Pay structure is unkown. 
+Researchers, Surveyors and Volunteers with the Trust. Pay structure is unknown. 
 
 5. **Over what timeframe was the data collected?** 
 
@@ -134,7 +134,7 @@ February 2020 to August 2021.
 Yes, questions were screened for sensitivity by Gallup’s Institutional Review
 Board (IRB). The process was Research and Literature Review -> Expert Interviews -> questionnaire first draft -> cognitive testing -> questionaire refinement -> pilot testing -> Final questionnaire.   
 
-8. **Does the dataset relate to people?** If not, you may skip the remainder of the questions in this section.
+8. **Does the dataset relate to people?** 
 
 Yes.
 
@@ -192,7 +192,7 @@ No.
 
 1. **Has the dataset been used for any tasks already?** 
 
-yes, to provide more infromation on best ways to form mental health treatments.
+yes, to provide more information on best ways to form mental health treatments.
 
 2. **Is there a repository that links to any or all papers or systems that use the dataset?** 
 
@@ -200,15 +200,15 @@ No.
 
 3. **What (other) tasks could the dataset be used for?**
 
-Prediction of other variables such as the probability someone has felt anxious in the last 12 month. 
+It could also be used for predicting other variables such as the probability someone has felt anxious or depressed in the last 12 months. 
 
 4. **Is there anything about the composition of the dataset or the way it was collected and preprocessed/cleaned/labeled that might impact future uses?**
 
-No. 
+Yes, the data was collected during the COVID lockdown era, which might have had a heavy impact on perceptions and access of mental health that would not normally be the case.  
 
 5. **Are there tasks for which the dataset should not be used?** 
 
-No.
+No, none were stated.
 
 6. **Any other comments?**
 
@@ -255,7 +255,7 @@ No.
 
 1. **Who is supporting/hosting/maintaining the dataset?**
 
-Wellcome Trust.
+Wellcome Trust supports, hosts, and maintains the dataset.
 
 2. **How can the owner/curator/manager of the dataset be contacted (e.g. email address)?**
 
