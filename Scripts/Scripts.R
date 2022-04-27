@@ -61,6 +61,9 @@ datamod = datamod %>%
          science = ifelse(science==1, "Belief","No Belief"),
          Gender = ifelse(Gender==1,"Male","Female"))
 
+datamod[sapply(datamod, is.character)] <- lapply(datamod[sapply(datamod, is.character)],
+                                                 as.factor)
+
 # Changed to match up with country names for map data
 datamod = datamod %>%
   mutate(COUNTRYNEW = str_replace_all(COUNTRYNEW,"Congo Brazzaville","Republic of Congo" ))
