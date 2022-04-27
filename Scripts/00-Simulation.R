@@ -1,9 +1,14 @@
 
 
 # simulation
+
 library("tidyverse")
+
+# for country variable
 install.packages("countrycode")
 countries <- countrycode::codelist$country.name.en
+
+
 set.seed(438)
 number = 23904
 
@@ -22,10 +27,10 @@ datasim =  tibble(
 )
 
 # This simulation attempts to create an artificial dataset similar to the main
-# dataset used for the report. We use random sampling with observations that are
+# dataset used for the report. We use random sampling with observations that we think are
 # similar to the ones for each variable in the report. We decided to use
 # probability sampling as we don't know the true distribution of these variables.
 
-# weakness: this simulation doesnt account for correlation within the covariates, people
-# in the us have higher wealth than other nations
-# for binary and categorical, simulate propritons as the proprtion you see in the dataset
+# weakness: this simulation doesn't account for correlation within the covariates, e.g people
+# in the US have higher wealth than other nations
+

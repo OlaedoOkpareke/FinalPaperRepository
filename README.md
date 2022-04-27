@@ -2,7 +2,7 @@
 
 This repository can be found at https://github.com/OlaedoOkpareke/FinalPaperRepository.
 
-First run the simulation file, this creates an imitation dataset that is similar to the one that will be used for analysis. Then rscript file, this cleans the dataset and loads the clean dataset into the Inputs Folder. Then run the bib file for references and citations, then run the rmd file.  
+First run the simulation file, this creates an imitation dataset that is similar to the one that will be used for analysis. Then run the rscript file, this cleans and modifies the dataset and loads the clean dataset into the Inputs Folder. Then run the bib file for references and citations, then run the rmd file.   
 
 The repository is organised as follows:
 
@@ -22,9 +22,9 @@ The datamod csv file contains the cleaned and modifed dataset; main dataset used
 
 3. The Scripts folder:
 
-The r script contains the code for reading in the data, cleaning and modifying the variables, and saving the csv file. 
+The Scripts.R file contains the code for reading in the data, cleaning and modifying the variables, and saving the csv file. 
 
-The simulation file contains the code used to create an imitation dataset using false data that looks similar to the actual dataset, used for analysis?
+The 00-Simulation file contains the code used to create an imitation dataset using false data that looks similar to the actual dataset, used for analysis?
 
 
 Abstract:
