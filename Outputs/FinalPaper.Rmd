@@ -59,7 +59,7 @@ While this survey provides valuable information on how the global population vie
 
 ## Data Source and Collection
 
-The survey dataset for this report comes from a February 2020 to August 2021 global survey [@citewebsite] performed by the Wellcome Trust, a British non-profit group that deals with health and well being. The survey observes how people consider and cope with anxiety and depression, and explores the perceived role of science to find new solutions. The population is all humans on earth, and the sample contains about 1000 observations each from 113 countries and territories. The survey was conducted via telephone interviews with random, nationally representative samples in their local languages, in collaboration with Gallup Polls [@citegallup]. The survey data was then stratified by weighting for each nation's population and other demographics, in order to remove collection bias and be representative of the global population [@citegallup]. The weights were also post-stratified to adjust for non-responses. The survey collected information on respondents' answers to several questions on their current and past mental state, access to care, thoughts on mental health as an individual and as part of a society, as well as answers on their demographics, income, and other classification groups. The options for most of the questions were "Yes", "No", or "Not sure/Refuse to respond".  In the dataset, these translate to numeric observations of 1, 2, or 99 respectively for each respondent. In the survey, demographic and classification questions have more than two possible options, with the dataset containing these results as text categories. The survey only collected data on respondents aged 15 years or older. Non response was indicated as either a 99, or an `NA`. The original dataset has 119,088 observations, 89 variables, and was last accessed April 2nd, 2022. 
+The survey dataset for this report comes from a February 2020 to August 2021 global survey [@citewebsite] performed by the Wellcome Trust, a British non-profit group that deals with health and well being. The survey observes how people consider and cope with anxiety and depression, and explores the perceived role of science to find new solutions. The population is all humans on earth, and the sample contains about 1000 observations each from 113 countries and territories. The survey was conducted via telephone interviews with random, nationally representative samples in their local languages, in collaboration with Gallup Polls [@citegallup]. The survey data was then stratified by weighting for each nation's population and other demographics such as age and gender, in order to remove collection bias and be representative of the global population [@citegallup]. The weights were also post-stratified to adjust for non-responses. The survey collected information on respondents' answers to several questions on their current and past mental state, access to care, thoughts on mental health as an individual and as part of a society, as well as answers on their demographics, income, and other classification groups. The options for most of the questions were "Yes", "No", or "Not sure/Refuse to respond".  In the dataset, these translate to numeric observations of 1, 2, or 99 respectively for each respondent. In the survey, demographic and classification questions have more than two possible options, with the dataset containing these results as text categories. The survey only collected data on respondents aged 15 years or older. Non response was indicated as either a 99, or an `NA`. The original dataset has 119,088 observations, 89 variables, and was last accessed April 2nd, 2022. 
 
 
 ## Data Cleaning
@@ -403,7 +403,7 @@ ggplot(emplogit1, aes(x = midpoint, y = emplogit, color = Gender)) +
 ```
 
 
-(Figure \@ref(fig:figeight)) shows the average probability of citizens who decided to seek mental health care for their depression and/or anxiety, by country. We see that the results differ by country, but countries in the same continent tend to have roughly similar probabilities of seeking mental health care. We see that most countries in western Europe and the Anglosphere have very high probabilities of seeking mental health, with probabilities of 70% or more. This is most likely due to their first world status, which comes with availability of health facilities, national health care system, and a generally high level of wealth. However for many ex-communist and developing countries, the average probabilities are much lower, ranging from below 70% to about 11%. South America has average probability levels of seeking mental health,ranging from 40%-55%. Central Asia, South East Asia and some of East Asia have a range of probabilities, but none of them are very high. This is indicative of the lower levels of income, less mental health facilities, misconceptions on mental health due to low mental health literacy, and general culture that looks down on such types of care. African countries also have low probabilities of getting mental health care for the same reasons stated, as well as the prevalence of war and general instability hindering the presence of permanent mental facilities, as well as a lack of nationalized health care. This is with the exceptions of Mali and south Africa, the latter likely being as it a relatively rich nation. However it should be noted that high income, developed nations like japan and south korea do not have high average probabilities of seeking mental health; japan's probability of seeking help is around the same as India's. This indicates that there is most likely a social stigma around seeking mental health care and thus a lower demand for mental health professionals, despite the developed health care system [@Roh2016].
+(Figure \@ref(fig:figeight)) shows the average probability of citizens who decided to seek mental health care for their depression and/or anxiety, by country. White-colored countries indicate no data. We see that the results differ by country, but countries in the same continent tend to have roughly similar probabilities of seeking mental health care. We see that most countries in western Europe and the Anglosphere have very high probabilities of seeking mental health, with probabilities of 70% or more. This is most likely due to their first world status, which comes with availability of health facilities, national health care system, and a generally high level of wealth. However for many ex-communist and developing countries, the average probabilities are much lower, ranging from below 70% to about 11%. South America has average probability levels of seeking mental health,ranging from 40%-55%. Central Asia, South East Asia and some of East Asia have a range of probabilities, but none of them are very high. This is indicative of the lower levels of income, less mental health facilities, misconceptions on mental health due to low mental health literacy, and general culture that looks down on such types of care. African countries also have low probabilities of getting mental health care for the same reasons stated, as well as the prevalence of war and general instability hindering the presence of permanent mental facilities, as well as a lack of nationalized health care. This is with the exceptions of Mali and south Africa, the latter likely being as it a relatively rich nation. However it should be noted that high income, developed nations like japan and south korea do not have high average probabilities of seeking mental health; japan's probability of seeking help is around the same as India's. This indicates that there is most likely a social stigma around seeking mental health care and thus a lower demand for mental health professionals, despite the developed health care system [@Roh2016].
 
 
 ```{r, include=FALSE, message = FALSE}
@@ -411,7 +411,7 @@ ggplot(emplogit1, aes(x = midpoint, y = emplogit, color = Gender)) +
 # getting average probability for each country
 country = datamod %>%
   group_by(COUNTRYNEW) %>%
-  summarize(meanhelp = mean(Help))
+  summarize(meanhelp = (mean(Help))*100) # make it a percentage
 
 # joining our country data with the map country data
 joinData <- joinCountryData2Map(country,
@@ -421,19 +421,19 @@ joinData <- joinCountryData2Map(country,
 ```
 
 
-```{r figeight, out.width="90%", echo=FALSE, fig.cap = "Probability of seeking Professional Mental Health Care in Each Country"}
+```{r figeight, out.width="90%", echo=FALSE, fig.cap = "Percentage Probability of seeking Professional Mental Health Care in Each Country"}
 
 # creating the map with specifications
 
 theMap <- mapCountryData( joinData, nameColumnToPlot="meanhelp", addLegend=FALSE,  mapTitle=" ", borderCol="black", missingCountryCol="white", oceanCol="lightblue")
-do.call( addMapLegend, c(theMap, legendWidth=1, legendMar = 2))
+do.call( addMapLegend, c(legendLabels="all", theMap, legendWidth=0.5, legendMar = 2))
 ```
 
 
-(Table \@ref(tab:tabthree)) shows the table of our predicted values from running the model using the testing and training datasets, compared to the true values. This is used to test the predictive properties of the model. The table shows the number of predicted values for each decision, as well as the number of true value for the decision. We do this to make sure that the model is good enough to be used on other samples of the global population.
+(Table \@ref(tab:tabthree)) shows the table of our predicted values from running the model using the testing and training datasets, compared to the true values. This is used to test the accuracy of the predictive properties of the model. The table shows the number of predicted values for each decision, as well as the number of true value for the decision. We do this to make sure that the model is good enough to be used on other samples of the global population.
 
 
-We see that the proportion of predictions that correctly predicted that the respondent sought help is 0.475 (also known as the sensitivity), while the proportion of predictions that correctly predicted that the respondent did not seek help is 0.79 (also known as the specificity). This means that our model is far more likely to predict that the respondent did not seek help than our results in (Tab \@ref(fig:tabone)) would indicate. Thus our predictive model seems to be biased towards 0. The total predictive proportion is `(0.475 x 0.43) + (0.79 x 0.57) = 0.654`, so overall the model correctly predicts the results about 65.4% of the time. Thus our model is not very good at predicting the probability that someone seeks help, and should not be used to predict this probability on other samples. This also indicates that the decision to seek help may be due to other personal reasons inherent to the individual that cannot be determined by what group they fit into, and shows that there is a lot of work to get the root behind these decisions and to progress mental health acceptance in general. 
+We see that the proportion of predictions that correctly predicted that the respondent sought help is 0.475 (also known as the sensitivity), while the proportion of predictions that correctly predicted that the respondent did not seek help is 0.79 (also known as the specificity). This means that our model is far more likely to predict that the respondent did not seek help than our results in (Tab \@ref(fig:tabone)) would indicate. Thus our predictive model seems to be biased towards 0. The total predictive proportion is `(0.475 x 0.43) + (0.79 x 0.57) = 0.654`, so overall the model correctly predicts the results about 65.4% of the time. Thus our model is not very good at predicting the probability that someone seeks help, and should not be used to predict this probability on other samples due to its inaccuracy. This also indicates that the decision to seek help may be due to other personal reasons inherent to the individual that cannot be determined by what group they fit into, and shows that there is a lot of work to get the root behind these decisions and to progress mental health acceptance in general. 
 
 
 ```{r,include = FALSE}
@@ -470,7 +470,7 @@ df <- data.frame (Prediction  = c(" ", "Did Not seek Therapy", "Sought Therapy")
                   )
 
 df %>%
-  knitr::kable(caption = "Accuracy of Predictions") %>% 
+  knitr::kable(caption = "Testing and Training Model Predictions Compared to True Observations") %>% 
   kable_styling(latex_options = "HOLD_position")
 ```
 
@@ -494,7 +494,7 @@ Finally, the dataset does not explain why lower income and unemployed people are
 
 ## Data Collection Concerns 
 
-There were some countries in which no data was recorded. This could be due to either these people not being randomly chosen due to a small population, or no-one that was chosen in the country decided to participate in the survey. Many of these missing countries were from Africa, and this missing data from these countries introduced bias in the dataset as these countries make a significant portion of the total global population. The results presented are thus likely very different from the true global perceptions of mental health and care,and is likely biased towards the western world and South America as most countries in those areas were included.  
+As seen in (Figure \@ref(fig:figeight)), there were several countries in which no data was recorded. This could be due to either these people not being randomly chosen due to a small population, or no-one that was chosen in the country decided to participate in the survey. Many of these missing countries were from Africa, and this missing data from these countries introduced bias in the dataset as these countries make a significant portion of the total global population. The results presented are thus likely very different from the true global perceptions of mental health and care,and is likely biased towards the western world and South America as most countries in those areas were included.  
 
 Some countries' mental health data were collected in a non-representative way. This was due to all respondents being from just one city in the country, for example all respondents from Congo lived in Brazzaville. The data for these countries are thus not randomly sampled, and doesn't contain the true overall perspective as the views of city people are likely different from those in smaller towns or rural areas. 
 
@@ -560,7 +560,7 @@ For further reports, the dataset does not state whether a person chooses not to 
 
 1. **For what purpose was the dataset created?** 
 
-This dataset was created to evaluate the importance of mental health to people worldwide, as well as the probability that a person seeks mental health care, dependent on their belonging to various groups.   
+This dataset was created to collect information on the global perceptions of mental disorders and mental health related topics, as well as experiences with mental disorders. The dataset was edited to evaluate the importance of mental health to people worldwide, as well as the probability that a person seeks mental health care, dependent on their belonging to various groups.   
 
 
 2. **Who created this dataset (e.g. which team, research group) and on behalf of which entity (e.g. company, institution, organization)**?
@@ -582,11 +582,11 @@ No.
 
 1. **What do the instances that comprise the dataset represent (e.g. documents, photos, people, countries)?** 
 
-Each row of the main dataset is a person, and the information about that specific person. 
+Each row of the main dataset is a person, and contains the information about that specific person. 
 
 2. **How many instances are there in total (of each type, if appropriate)?**
 
-There are about 119,000 instances in the original datset. The dataset used for the report contains about 23700 instances. 
+There are about 119,000 instances in the original datset. The dataset used for the report contains about 23970 instances. 
 
 3. **Does the dataset contain all possible instances or is it a sample (not necessarily random) of instances from a larger set?**
 
@@ -595,7 +595,7 @@ The dataset is a sample of the total global population. The sample is intended t
 
 4. **What data does each instance consist of?** 
 
-Each instance consists of demographic, societal information or information on beliefs and choices regarding mental health and mental health care. For example Age, income class, country, belief in mental health science.
+Each instance consists of demographic and societal information, or information on beliefs and choices regarding mental health and mental health care. For example Age, income class, country, belief in mental health science.
 
 5. **Is there a label or target associated with each instance?** 
 
@@ -603,7 +603,7 @@ Yes, there is a unique case ID for every individual.
 
 6. **Is any information missing from individual instances?** 
 
-There is a lot of missing information, particularly on the choice to seek mental health. This is most likely because these questions were not asked to most respondents. 
+There is a lot of missing information, particularly on the choice to seek mental health care. This is most likely because these questions were not asked to most respondents. 
 
 7. **Are relationships between individual instances made explicit (e.g. users' movie ratings, social network links)?** 
 
@@ -624,9 +624,7 @@ It is self-contained.
 
 11. **Does the dataset contain data that might be considered confidential (e.g. data that is protected by legal privilege or by doctor-patient confidentiality, data that includes the content of individuals' non-public communications)?** 
 
-
 Yes, the decision to seek mental health care, age, and the subjective income are examples of private information in the dataset. 
-
 
 
 12. **Does the dataset contain data that, if viewed directly, might be offensive, insulting, threatening, or might otherwise cause anxiety?** 
@@ -639,7 +637,7 @@ Yes.
 
 14. **Does the dataset identify any subpopulations (e.g. by age, gender)?** 
 
-Yes, age, gender, and country are examples.
+Yes. Age, gender, and country are examples.
 
 15. **Is it possible to identify individuals (i.e., one or more natural persons), either directly or indirectly (i.e., in combination with other data) from the dataset?**
 
@@ -647,7 +645,7 @@ No.
 
 16. **Does the dataset contain data that might be considered sensitive in any way (e.g. data that reveals racial or ethnic origins, sexual orientations, religious beliefs, political opinions or union memberships, or locations; financial or health data; biometric or genetic data; forms of government identification, such as social security numbers; criminal history)?** 
 
-yes, it contains political information on if the government should fund mental health research.
+Yes, it contains political information on if the government should fund mental health research.
 
 17. **Any other comments?**
 
@@ -663,7 +661,7 @@ Through a telephone-based global survey in which the respondents were directly a
 
 2. **What mechanisms or procedures were used to collect the data (e.g. hardware apparatus or sensor, manual human curation, software program, software API)?**
 
-Manual Human curation, as each question was answered by speech and then manually recorded as a numeric observation.
+Manual Human curation, as each question was answered through speech and then manually recorded as a numeric observation.
 
 3. **If the dataset is a sample from a larger set, what was the sampling strategy (e.g. deterministic, probabilistic with specific sampling probabilities)?**
 
@@ -678,8 +676,11 @@ Researchers, Surveyors and Volunteers with the Trust. Pay structure is unknown.
 February 2020 to August 2021.
 
 7. **Were any ethical review processes conducted (e.g. by an institutional review board)?** 
+
 Yes, questions were screened for sensitivity by Gallup’s Institutional Review
-Board (IRB). The process was Research and Literature Review -> Expert Interviews -> questionnaire first draft -> cognitive testing -> questionaire refinement -> pilot testing -> Final questionnaire.   
+Board (IRB). 
+
+The process was Research and Literature Review -> Expert Interviews -> questionnaire first draft -> cognitive testing -> questionnaire refinement -> pilot testing -> Final questionnaire.   
 
 8. **Does the dataset relate to people?** 
 
@@ -697,7 +698,7 @@ Link: https://cms.wellcome.org/sites/default/files/2021-10/wgm2020-methodology.p
 
 11. **Did the individuals in question consent to the collection and use of their data?** 
 
-Yes, those who did not consent were put as "Refused" as an observation.
+Yes, those who did not consent for their answers to be recorded had their observations stated as "Refused" in the dataset.
 
 Link: https://cms.wellcome.org/sites/default/files/2021-10/wgm2020-methodology.pdf
 
@@ -718,7 +719,7 @@ No.
 
 1. **Was any preprocessing/cleaning/labeling of the data done (e.g. discretization or bucketing, tokenization, part-of-speech tagging, SIFT feature extraction, removal of instances, processing of missing values)?** 
 
-Yes, the data was cleaned. 
+Yes, the data was cleaned but missing values were not processed. 
 
 2. **Was the "raw" data saved in addition to the preprocessed/cleaned/labeled data (e.g. to support unanticipated future uses)?** 
 
@@ -738,7 +739,7 @@ No.
 
 1. **Has the dataset been used for any tasks already?** 
 
-yes, to provide more information on best ways to form mental health treatments.
+Yes, to provide background information on the most appropriate ways to form mental health treatments.
 
 2. **Is there a repository that links to any or all papers or systems that use the dataset?** 
 
@@ -746,11 +747,11 @@ No.
 
 3. **What (other) tasks could the dataset be used for?**
 
-It could also be used for predicting other variables such as the probability someone has felt anxious or depressed in the last 12 months. 
+It could also be used for predicting other variables, such as the probability that someone has felt anxious or depressed in the last 12 months. 
 
 4. **Is there anything about the composition of the dataset or the way it was collected and preprocessed/cleaned/labeled that might impact future uses?**
 
-Yes, the data was collected during the COVID lockdown era, which might have had a heavy impact on perceptions and access of mental health that would not normally be the case.  
+Yes, the data was collected during the COVID lockdown era, which might have had a heavy impact on perceptions and access to mental health care that may not normally be the case in the future.  
 
 5. **Are there tasks for which the dataset should not be used?** 
 
@@ -765,11 +766,11 @@ No.
 
 1. **Will the dataset be distributed to third parties outside of the entity (e.g. company, institution, organization) on behalf of which the dataset was created?** 
 
-No, the dataset is only available on the website. 
+No, the dataset is only available on the Wellcome Trust website. 
 
 2. **How will the dataset be distributed (e.g. tarball on website, API, GitHub)?** 
 
-On the Wellcome Global Monitor Website. There is no DOI available. 
+On the Wellcome Global Monitor Website. There is no DOI or GitHub available. 
 
 3. **When will the dataset be distributed?**
 
@@ -803,7 +804,7 @@ Wellcome Trust supports, hosts, and maintains the dataset.
 
 2. **How can the owner/curator/manager of the dataset be contacted (e.g. email address)?**
 
-Email address: Not stated on Website
+Email address, although not directly stated on Website
 
 Telephone: +44(0)2076118888
 
@@ -823,11 +824,11 @@ No, there is no limit.
 
 6. **Will older versions of the dataset continue to be supported/hosted/maintained?** 
 
-Older versions years of the dataset, i.e datasets for previous years are being hosted on their own web pages. 
+Older versions of the dataset, i.e datasets for previous years, are being hosted on their own web pages. 
 
 7. **If others want to extend/augment/build on/contribute to the dataset, is there a mechanism for them to do so?** 
 
-No. Only those employed by Wellcome Trust and Gallup Polls are approved to add on to the dataset. 
+No. Only those employed by or partnered with Wellcome Trust or Gallup Polls are approved to add on to the dataset. 
 
 8. **Any other comments?**
 
