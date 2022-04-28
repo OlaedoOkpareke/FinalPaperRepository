@@ -69,8 +69,7 @@ datamod = datamod %>%
     Education == 1 ~ "Elementary or less",
     Education == 2 ~ "Secondary",
     Education == 3 ~ "Tertiary",
-    Education == 4 ~ "No Answer",
-    TRUE ~ "None"
+    TRUE ~ "No Answer"
   ))
 
 # changing numerical observations to actual choices

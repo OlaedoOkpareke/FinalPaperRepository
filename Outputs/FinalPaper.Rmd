@@ -3,7 +3,7 @@ title: "Mental Health Care Is Not an Option for Many Worldwide due to Economic a
 author: "Olaedo Okpareke"
 thanks: 'Code and data are available at: https://github.com/OlaedoOkpareke/FinalPaperRepository' 
 date: "`r format(Sys.time(), '%d %B %Y')`"
-abstract: "Mental Health care is as important as physical care, however for many people globally, it is deemed as unimportant or unattainable. Previous research has found that the choice to seek therapy is heavily related to income, gender, and personal views towards mental health. We use data from the 2020 Wellcome Trust survey on Mental Health to analyze this. We use graphs and tables to evaluate the differences in mental health access for different groups, using R [@citeR] and other packages. We also predict the probability that a person belonging to certain groups seeks out professional care. We find that the personal income of an individual, relative wealth of the country, gender, and the presence of external support increase the likelihood that a person seeks mental health care. We also find that level of education, employment status and views on the validity of mental health science also affect this choice. This shows the elitism and privilege tied to mental health access, and explains why getting adequate care is not an option for many people. In order to increase the acceptance and availability of mental health treatments, it is important to identify and lessen the sources of these barriers.  \\par \\textbf {Keywords:} Mental Health, Therapy, Global, Education, Wealth, Inequality, Education, Science,Gender"
+abstract: "Mental Health care is fundamental to a good quality of life, however for many people globally, it is deemed as unimportant or unattainable. Previous research has found that the choice to seek therapy is heavily related to income, gender, and personal views towards mental health, so we use data from the 2020 Wellcome Trust survey on Mental Health to analyze this. We use graphs and tables to evaluate the differences in mental health access for different groups, using R [@citeR] and other packages. We also predict the probability that a person belonging to certain groups seeks out professional care. We find that the personal income of an individual, relative wealth of the country, gender, and the presence of external support increase the likelihood that a person seeks mental health care. We also find that level of education, employment status and views on the validity of mental health science also affect this choice. This shows the elitism and privilege tied to mental health access, and explains why getting adequate care is not an option for many people. In order to increase the acceptance and availability of mental health treatments, it is important to identify and lessen the sources of these barriers.  \\par \\textbf {Keywords:} Mental Health, Therapy, Global, Stigma, Wealth, Inequality, Education, Science, Gender"
 output:
   bookdown::pdf_document2
 toc: FALSE
@@ -316,7 +316,7 @@ We chose to use level of educational attainment in the model, as the college edu
 Finally, we chose to evaluate the wealth of a nation, as it has been extensively confirmed that citizens of lower and middle income nations are far less likely to seek professional help than citizens of industrialized nations. This is because citizens of these countries are far more likely to be lower income, have poorer knowledge on the benefits of mental health care [@Saraceno2007], and have less accessibility to mental health facilities [@Hanlon2014]. 
 
 
-## Results
+# Results
 
 (Table \@ref(tab:tabone)) shows the summary of choice for mental health care by showing the proportion of people who chose to use these avenues, and those who did not. We see that overall, 57% of respondents worldwide chose not to seek therapy, leaving about 43% who did choose to seek this route. Compared to seeking health for physical problems, we see that mental health care is still not a priority for many people worldwide [@Grover2020]. This could possibly be due to gender roles, elitism in mental health care and the cost of care, and unavailability of the necessary facilities. This could also be caused by the respondents beliefs that mental health either is not important, does not exist, or that therapy is ineffective.
 
@@ -338,7 +338,7 @@ datamod %>%
 The coefficients have been exponentiated in order to be interpretable, so this figure shows the results of $e^{\beta_j}$.  The exponentiated coefficients explain the expected increase in the odds of seeking help for each level of a variable, provided other variables stay constant. The error bars also show the lower and upper bounds of the estimates, to give a full plausible range of values that the coefficient could take. A value of 1 here means that the predicted probability of seeking professional mental help is just as likely when the respondent is in this group than when they are not. Coefficients with values that are less than 1 mean that being part of the group the variable represents, makes the respondent less likely to seek help, while values more than 1 means the respondent is more likely to seek professional mental health care if they are part of this group. For example, We see the odds of men seeking mental health care is only about 0.8  times that of women, meaning that they are 20% less likely to seek mental health care than women. The odds that citizens of the high income nations seek mental health care is about 1.75 times that of citizens of the lowest income nations, meaning they are 75% more likely to seek help. On the other hand, we see that the odds that someone who is finding it very difficult to get by on their income gets mental health care is only 0.75 times that of someone living comfortably on their income, meaning they are 25% less likely to seek help. 
 
 
-```{r figsix, out.width="90%", echo = FALSE, fig.cap = "Estimates for the Coefficients and Confidence Intervals"}
+```{r figsix, out.width="90%", echo = FALSE, fig.cap = "Coefficient Estimates and Confidence Intervals"}
 
 # exponentiated coefficient estimates 
 coefficients <- broom::tidy(model1, conf.int = T)
@@ -352,8 +352,7 @@ coefexp = coefficients %>%
 coefexp %>% ggplot(aes(estimate, term)) +
   geom_point() +
   geom_errorbar(aes(xmin = conf.low, xmax = conf.high)) +
-  labs(title = "Coefficient Estimates",
-       x = "Estimates", y = "Coefficients") +
+  labs(x = "Estimates", y = "Coefficients") +
   theme_minimal() + 
   theme(axis.text.y = element_text(size = 5))
 ```
@@ -375,7 +374,7 @@ knitr::kable(coefexp,
 (Figure \@ref(fig:figseven)) shows the relationship between age and the decision to seek mental health care, grouped by gender. We use the logit link due to the binary nature of the response. We see that due to the increasing trend, the older a person gets, the more likely they are to seek mental health care. The gray areas serve as confidence intervals, showing the range of plausible probabilities each age group could have, which also consistently increasing with age. Thus for both men and women, the older one gets the more likely that they seek mental health care. We also see that at all ages, women are consistently more likely to seek mental help than men are. This shows the stark age differences in mental health care, where [@Mackenzie2006] states that due to societal expectations on gender and age, older adults are more likely to seek help than younger adults, and women are more likely to seek help then men. We see that woman at older ages still seek mental help, while men seem not to to do this at all. However this is likely due to collection problems with the dataset or graphical methods, and not with the actual global population of men. 
 
 
-```{r figseven, echo=FALSE, out.width="90%", fig.cap = "Relationship between the Decision to seek mental Help by Age, grouped by Gender" }
+```{r figseven, echo=FALSE, out.width="90%", fig.cap = "Relationship between the Decision to seek mental Help and Age, grouped by Gender" }
 
 # grouping by gender and making age groups
 risk <- datamod %>%
@@ -430,10 +429,10 @@ do.call( addMapLegend, c(legendLabels="all", theMap, legendWidth=0.5, legendMar 
 ```
 
 
-(Table \@ref(tab:tabthree)) shows the table of our predicted values from running the model using the testing and training datasets, compared to the true values. This is used to test the accuracy of the predictive properties of the model. The table shows the number of predicted values for each decision, as well as the number of true value for the decision. We do this to make sure that the model is good enough to be used on other samples of the global population.
+(Table \@ref(tab:tabthree)) shows the table of our predicted values from running the model on the training and testing datasets, compared to the true values. This is used to test the accuracy of the predictive properties of the model. The table shows the number of predicted values for each decision, as well as the number of true value for the decision. We do this to make sure that the model is good enough to be used on other samples of the global population.
 
 
-We see that the proportion of predictions that correctly predicted that the respondent sought help is 0.475 (also known as the sensitivity), while the proportion of predictions that correctly predicted that the respondent did not seek help is 0.79 (also known as the specificity). This means that our model is far more likely to predict that the respondent did not seek help than our results in (Tab \@ref(fig:tabone)) would indicate. Thus our predictive model seems to be biased towards 0. The total predictive proportion is `(0.475 x 0.43) + (0.79 x 0.57) = 0.654`, so overall the model correctly predicts the results about 65.4% of the time. Thus our model is not very good at predicting the probability that someone seeks help, and should not be used to predict this probability on other samples due to its inaccuracy. This also indicates that the decision to seek help may be due to other personal reasons inherent to the individual that cannot be determined by what group they fit into, and shows that there is a lot of work to get the root behind these decisions and to progress mental health acceptance in general. 
+We see that the proportion of predictions that correctly predicted that the respondent sought help is 0.475 (also known as the sensitivity), while the proportion of predictions that correctly predicted that the respondent did not seek help is 0.79 (also known as the specificity). This means that our model is far more likely to predict that the respondent did not seek help than our results in (Table \@ref(tab:tabone)) would indicate. Thus our predictive model seems to be biased towards 0. The total predictive proportion is `(0.475 x 0.43) + (0.79 x 0.57) = 0.654`, so overall the model correctly predicts the results about 65.4% of the time. Thus our model is not very good at predicting the probability that someone seeks help, and should not be used to predict this probability on other samples due to its inaccuracy. This also indicates that the decision to seek help may be due to other personal reasons inherent to the individual that cannot be determined by what group they fit into, and shows that there is a lot of work to get the root behind these decisions and to progress mental health acceptance in general. 
 
 
 ```{r,include = FALSE}
@@ -470,7 +469,7 @@ df <- data.frame (Prediction  = c(" ", "Did Not seek Therapy", "Sought Therapy")
                   )
 
 df %>%
-  knitr::kable(caption = "Testing and Training Model Predictions Compared to True Observations") %>% 
+  knitr::kable(caption = "Training and Testing Model Predictions Compared to True Observations") %>% 
   kable_styling(latex_options = "HOLD_position")
 ```
 
