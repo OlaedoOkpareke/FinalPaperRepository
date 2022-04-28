@@ -8,16 +8,17 @@ The repository is organised as follows:
 
 1. The Outputs folder: 
 
-The .bib file contains the citations for the raw data, website that the data is gotten from, packages and literature used in the report.
+The .bib file contains the citations website that the data is gotten from, the packages used for analysis, and the literature used in the report.
 
-The rmd file contains the analysis report on the decision to seek mental health care globally for 2021 based on status in different grouos, as well as the code used to create the report. This code was mainly used to create tables and graphs, as well as for training and testing. This rmd file also contains the datasheet for the original, and to an extent the cleaned, datasets. 
+The rmd file contains the report on the decision to seek mental health care globally for 2020 based on status in different grouos, as well as the code used to create the report. This code was mainly used to create tables and graphs, as well as for training and testing. This rmd file also contains the datasheet for the original dataset, and to an extent the cleaned dataset. 
 
-The pdf file contains the same analysis report but in pdf form, and without the code.
+The pdf file contains the same report analysis but in pdf form, and without the code.
 
 2. The Inputs folder:
 
 The wgm_full_wave2_public_file_final (1)_csv.csv dataset is the original dataset gotten from the data source.
-The datamod csv file contains the cleaned and modifed dataset; main dataset used in the report. 
+
+The datamod csv file contains the cleaned and modifed dataset; the main dataset used in the report. 
 
 
 3. The Scripts folder:

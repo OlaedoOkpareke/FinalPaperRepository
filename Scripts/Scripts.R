@@ -1,7 +1,8 @@
+
 #### Preamble ####
 # Purpose: Load and modify the data from the Wellcome Global Monitor 2020
 # Author: Olaedo Okpareke
-# Data: 26 February 2022
+# Data: 26 April 2022
 # Contact: olaedo.okpareke@mail.utoronto.ca
 # License: MIT
 # Pre-requisites:
