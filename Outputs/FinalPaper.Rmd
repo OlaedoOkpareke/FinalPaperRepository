@@ -1,5 +1,5 @@
 ---
-title: "Mental Health Care Is Not an Option for Many Worldwide due to Economic and Societal Factors"
+title: "Mental Health Care Is Not an Option for Many Worldwide due to Financial Inequality and Societal Stigma"
 author: "Olaedo Okpareke"
 thanks: 'Code and data are available at: https://github.com/OlaedoOkpareke/FinalPaperRepository' 
 date: "`r format(Sys.time(), '%d %B %Y')`"
