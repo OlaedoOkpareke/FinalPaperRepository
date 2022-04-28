@@ -239,7 +239,7 @@ We do not use residual plots or pairwise plots as they are not very helpful for 
 
 We check that the predicted values of the response from our final model are binary, which they are as evident from the "S" shape going from 0 to 1 in (Figure \@ref(fig:figfive)), which shows that all possible values are between 0 to 1, and that the probabilities do not increase in a linear manner.  
 
-```{r figfive, out.width="90%", echo = FALSE, fig.cap = "Fitted Value Probabilities of the Model Showing the Binary Nature"}
+```{r figfive, out.width="90%", echo = FALSE, fig.cap = "The Binary Fitted Value Probabilities of the Model"}
 
 model1 = glm(Help ~ friends + science + Age + employment + Gender + Education + Subjective_Income + wbi, data = datamod, family = "binomial")
 
@@ -552,6 +552,10 @@ During data cleaning, we removed all observations that had a missing value in th
 
 For further reports, the dataset does not state whether a person chooses not to seek help because they do not want help, or because they are not able to seek help, or both. Dividing these decisions into two variables could help with further analysis on the barriers to getting mental health treatment. We could also include other mental disorders and their effect on societal attitudes and decisions to seek help, as well as respondent experiences with these disorders. This will create a fuller idea of how mental disorders are viewed worldwide. We could also focus specifically on mental health in the COVID19 era, and how COVID19 and subsequent lockdowns changed attitudes towards mental health. We could use a linear mixed model to include a random effect for the respondent's country to account for the possibility that not all observations in the same country are truly independent from each other, as they may have similar shared experiences. We could also use other variables in our model related to perceptions and opinions on mental health and mental health care to improve the predictive properties of the model.
 
+
+\newpage
+
+
 # Appendix 
 
 ## Datasheet for Dataset
@@ -833,6 +837,9 @@ No. Only those employed by or partnered with Wellcome Trust or Gallup Polls are 
 8. **Any other comments?**
 
 No.
+
+
+\newpage 
 
 
 # References

@@ -15,14 +15,20 @@ number = 23904
 datasim =  tibble(
   COUNTRYNEW = rep(c(countries), each = 83, replace= FALSE),
   help = sample(c(0,1), size = number, replace = TRUE, prob = c(0.7,0.3)),
-  friend = sample(c(0,1), size = number, replace = TRUE, prob = c(0.2,0.8)),
-  science = sample(c(0,1), size = number, replace = TRUE, prob = c(0.5,0.5)),
+  Help = sample(c("Did Not seek Therapy","Sought therapy"), size = number, replace = TRUE, prob = c(0.7,0.3)),
+  friends = sample(c("Did Not seek Friends","Sought Friends"), size = number, replace = TRUE, prob = c(0.2,0.8)),
+  comfort = sample(c(0,1), size = number, replace = TRUE, prob = c(0.8,0.2)),
+  science = sample(c("No Belief","Belief"), size = number, replace = TRUE, prob = c(0.5,0.5)),
   EMP_2010 = sample(c(1:6), size = number, replace = TRUE),
-  Age = sample(c(10:100), size = number, replace = TRUE),
-  Gender = sample(c(1,2), size = number, replace = TRUE, prob = c(0.5,0.5)),
-  Education = sample(c(1:3), size = number, replace = TRUE),
-  Income = sample(c(1:4), size = number, replace = TRUE),
-  wbi = rep(c(1:4), each= number/4, replace = TRUE)
+  employment = sample(c("Fully Employed by employer", "Self Employed","Employed Part Time, Content",
+                        "Unemployed","Employed Part Time,not content","Out of Workforce"),
+                      size = number, replace = TRUE),
+  Age = sample(c(15:100), size = number, replace = TRUE),
+  Gender = sample(c("Male","Female"), size = number, replace = TRUE, prob = c(0.5,0.5)),
+  Education = sample(c("Secondary","Tertiary","Elementary or less","No Answer"), size = number, replace = TRUE),
+  Income = sample(c("Living Comfortably", "Getting By", "Difficult to Get By", "Very Difficult to get By",
+                    "Not Sure","No Answer"), size = number, replace = TRUE),
+  wbi = rep(c("Low Income","Lower-middle Income","Upper-middle Income","High Income"), each= number/4, replace = TRUE)
 
 )
 
